@@ -1,5 +1,17 @@
 import * as readline from "node:readline";
 import { stdin as input, stdout as output } from "node:process";
+import { z } from "zod";
+
+export const sideLengthSchema = z
+  .number()
+  .refine((value) => !Number.isNaN(value), {
+    message: "Toate valorile trebuie sa fie numere (ex: 10,5,10,5).",
+  })
+  .positive("Laturile trebuie sa fie mai mari decat 0.");
+
+export const sideLengthsSchema = z
+  .array(sideLengthSchema)
+  .length(4, "Introdu exact 4 valori separate prin virgula (ex: 10,5,10,5).");
 
 export function isParallelogramSides(lengths: number[]): boolean {
   if (lengths.length !== 4) {
@@ -26,17 +38,14 @@ function parseLengths(rawInput: string): number[] {
     throw new Error("Format invalid. Foloseste exact 4 valori separate doar prin virgula.");
   }
 
-  if (parts.length !== 4) {
-    throw new Error("Introdu exact 4 valori separate prin virgula (ex: 10,5,10,5).");
-  }
-
   const lengths = parts.map((value) => Number(value));
 
-  if (lengths.some((value) => Number.isNaN(value))) {
-    throw new Error("Toate valorile trebuie sa fie numere (ex: 10,5,10,5).");
+  const parseResult = sideLengthsSchema.safeParse(lengths);
+  if (!parseResult.success) {
+    throw new Error(parseResult.error.issues[0]?.message ?? "Eroare de validare.");
   }
 
-  return lengths;
+  return parseResult.data;
 }
 
 export async function runParallelogramCli(): Promise<void> {
