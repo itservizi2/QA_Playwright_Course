@@ -1,0 +1,4 @@
+SELECT * FROM Angajati
+WHERE Salariu BETWEEN 4000 AND 7000
+ORDER BY Salariu ASC;
+

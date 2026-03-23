@@ -2,3 +2,5 @@
 node_modules
 /paralelogram-check/dist
 dist
+/.vscode
+/my_dbconnect.session.sql
