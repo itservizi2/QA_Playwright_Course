@@ -4,3 +4,4 @@ node_modules
 dist
 /.vscode
 /my_dbconnect.session.sql
+/my_dbase_join.session.sql
