@@ -6,3 +6,4 @@ dist
 /my_dbconnect.session.sql
 /my_dbase_join.session.sql
 /my_dbase_internship.session.sql
+/.idea
