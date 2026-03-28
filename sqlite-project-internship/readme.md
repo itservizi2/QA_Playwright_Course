@@ -49,35 +49,39 @@ sqlite3 my_database.db < task1.sql
 ## Tabela Suppliers
 
 ```sql
-Supplier_id INTEGER(8) PRIMARY KEY,
-Supplier_name VARCHAR(25),
-ContractNr INTEGER(10) NOT NULL,
-Loc_id INTEGER(5),
-IBAN VARCHAR(25) NOT NULL
+CREATE TABLE Suppliers (
+    Supplier_id INTEGER PRIMARY KEY,
+    Supplier_name VARCHAR(25),
+    ContractNr INTEGER NOT NULL,
+    Loc_id INTEGER,
+    IBAN VARCHAR(25) NOT NULL
+);
 ```
 
 ## Tabela Products
 
 ```sql
-Product_id INTEGER(10) PRIMARY KEY,
-Product_name VARCHAR(25) NOT NULL,
-Manufacture_date DATE,
-Validity INTEGER(4), -- Reprezinta zile
-Unit_price DECIMAL(4),
-Supplier_id INTEGER(8)
+CREATE TABLE Products (
+    Product_id INTEGER PRIMARY KEY,
+    Product_name VARCHAR(25) NOT NULL,
+    Manufacture_date DATE,
+    Validity INTEGER, -- Reprezinta zile
+    Unit_price DECIMAL(10,2),
+    Supplier_id INTEGER
+);
 ```
 
 ## Lista taskurilor (task2 pana la task11)
 
-| Fisier      | Cerinta |
-|------------|---------|
-| `task2.sql` | Insert 10 rows in Products table & 8 rows in Suppliers table. |
-| `task3.sql` | Write a SQL statement to copy the structure of the Suppliers table created in the first task and the records that will meet the condition: Supplier_Name = 'Franzeluta'. |
-| `task4.sql` | Add one more column Product_Category(VARCHAR(20)) to Products table. |
-| `task5.sql` | Update all the product_category fields (e.g.: bakery, dairy, beverages). |
-| `task6.sql` | Delete the last row from the table Products. |
-| `task7.sql` | Display the products which contain the "..as.." in the product name. |
-| `task8.sql` | Display all the details of the products along with the supplier details for the products that have a validity of more than 1 year. |
-| `task9.sql` | Display the total price of products per category (Group By). |
-| `task10.sql` | Check how many days have already each product and verify that it has not exceeded the expiration date. Display only the valid products. |
-| `task11.sql` | Display all product details with the same validity period as row number 5. |
+| Fisier       | Cerinta                                                                                                                                                                  |
+|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `task2.sql`  | Insert 10 rows in Products table & 8 rows in Suppliers table.                                                                                                            |
+| `task3.sql`  | Write a SQL statement to copy the structure of the Suppliers table created in the first task and the records that will meet the condition: Supplier_Name = 'Franzeluta'. |
+| `task4.sql`  | Add one more column Product_Category(VARCHAR(20)) to Products table.                                                                                                     |
+| `task5.sql`  | Update all the product_category fields (e.g.: bakery, dairy, beverages).                                                                                                 |
+| `task6.sql`  | Delete the last row from the table Products.                                                                                                                             |
+| `task7.sql`  | Display the products which contain the "..as.." in the product name.                                                                                                     |
+| `task8.sql`  | Display all the details of the products along with the supplier details for the products that have a validity of more than 1 year.                                       |
+| `task9.sql`  | Display the total price of products per category (Group By).                                                                                                             |
+| `task10.sql` | Check how many days have already each product and verify that it has not exceeded the expiration date. Display only the valid products.                                  |
+| `task11.sql` | Display all product details with the same validity period as row number 5.                                                                                               |
