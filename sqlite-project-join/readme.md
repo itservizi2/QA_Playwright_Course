@@ -97,16 +97,16 @@ sqlite3 my_database.db < task-j.sql
 
 # Lista de Task-uri SQL
 
-| Fisier      | Cerinta |
-|------------|---------|
-| task-a.sql | Sa se gaseasca toti angajatii departamentului Administratie, care au un salariu mai mare de 5000. |
-| task-b.sql | Sa se afiseze unic, toate orasele in care se amplaseaza departamentele. |
-| task-c.sql | Sa se gaseasca angajatul cu cel mai mic salariu. Sa se afiseze numele, prenumele si salariu. |
-| task-d.sql | Sa se gaseasca toti angajatii, numele carora incepe cu 'PO'. |
-| task-e.sql | Sa se gaseasca angajatii care au salariu de la 4000 la 6000. Sa se afiseze numele, prenumele si salariu. |
+| Fisier     | Cerinta                                                                                                                               |
+|------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| task-a.sql | Sa se gaseasca toti angajatii departamentului Administratie, care au un salariu mai mare de 5000.                                     |
+| task-b.sql | Sa se afiseze unic, toate orasele in care se amplaseaza departamentele.                                                               |
+| task-c.sql | Sa se gaseasca angajatul cu cel mai mic salariu. Sa se afiseze numele, prenumele si salariu.                                          |
+| task-d.sql | Sa se gaseasca toti angajatii, numele carora incepe cu 'PO'.                                                                          |
+| task-e.sql | Sa se gaseasca angajatii care au salariu de la 4000 la 6000. Sa se afiseze numele, prenumele si salariu.                              |
 | task-f.sql | Sa se gaseasca toti angajatii departamentului 'Administratie' care activeaza in biroul 20. Sa se afiseze numele, prenumele si biroul. |
-| task-g.sql | Sa se gaseasca pentru fiecare angajat, care este adresa sa de lucru. Sa se afiseze numele, prenumele si adresa. |
-| task-h.sql | Afisati angajatii care lucreaza in departamente aflate in orasele Orhei sau Balti si au salariul mai mare de 4500. |
-| task-i.sql | Afisati angajatii care lucreaza in departamente aflate in orasul Orhei si au biroul egal cu 20. |
-| task-j.sql | Afisati salariul mediu pentru fiecare departament impreuna cu orasul in care se afla departamentul (Hint: Avg() si Group By). |
+| task-g.sql | Sa se gaseasca pentru fiecare angajat, care este adresa sa de lucru. Sa se afiseze numele, prenumele si adresa.                       |
+| task-h.sql | Afisati angajatii care lucreaza in departamente aflate in orasele Orhei sau Balti si au salariul mai mare de 4500.                    |
+| task-i.sql | Afisati angajatii care lucreaza in departamente aflate in orasul Orhei si au biroul egal cu 20.                                       |
+| task-j.sql | Afisati salariul mediu pentru fiecare departament impreuna cu orasul in care se afla departamentul (Hint: Avg() si Group By).         |
 

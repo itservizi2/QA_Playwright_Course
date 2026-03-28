@@ -93,15 +93,15 @@ sqlite3 my_database.db < task9.sql
 
 # Lista de Task-uri SQL
 
-| Fisier | Cerinta |
-|--------|---------|
-| task1  | Creati aceste doua tabele in baza de date si completati-le cu datele respective. |
-| task2  | Pentru tabelul "Angajati", modificati valoarea la salariu la suma de 5000, pentru toti angajatii din biroul 20. |
-| task3  | Pentru tabelul "Departament", modificati denumirea orasului pe Balti, pentru departamentele din orasul Orhei. |
-| task4  | Modificati departamentul pentru angajatul Popescu Ion la "Distributie". |
-| task5  | Pentru tabelul "Angajati", afisati toti angajatii al caror salariu este intre 4000 si 7000, ordonati dupa salariu crescator. |
+| Fisier | Cerinta                                                                                                                             |
+|--------|-------------------------------------------------------------------------------------------------------------------------------------|
+| task1  | Creati aceste doua tabele in baza de date si completati-le cu datele respective.                                                    |
+| task2  | Pentru tabelul "Angajati", modificati valoarea la salariu la suma de 5000, pentru toti angajatii din biroul 20.                     |
+| task3  | Pentru tabelul "Departament", modificati denumirea orasului pe Balti, pentru departamentele din orasul Orhei.                       |
+| task4  | Modificati departamentul pentru angajatul Popescu Ion la "Distributie".                                                             |
+| task5  | Pentru tabelul "Angajati", afisati toti angajatii al caror salariu este intre 4000 si 7000, ordonati dupa salariu crescator.        |
 | task6  | Pentru tabelul "Angajati", afisati doar angajatii din departamentele Administratie si Productie, dar care nu lucreaza in biroul 20. |
-| task7  | Pentru tabelul "Angajati", mariti salariul cu 10% pentru toti angajatii din departamentul Planificare. |
-| task8  | Pentru tabelul "Departament", afisati departamentele a caror denumire incepe cu litera "D" sau a caror adresa contine litera "a". |
-| task9  | Pentru tabelul "Angajati", stergeti toti angajatii care au salariul mai mic de 4500 si lucreaza in departamentul Productie. |
+| task7  | Pentru tabelul "Angajati", mariti salariul cu 10% pentru toti angajatii din departamentul Planificare.                              |
+| task8  | Pentru tabelul "Departament", afisati departamentele a caror denumire incepe cu litera "D" sau a caror adresa contine litera "a".   |
+| task9  | Pentru tabelul "Angajati", stergeti toti angajatii care au salariul mai mic de 4500 si lucreaza in departamentul Productie.         |
 
