@@ -19,7 +19,7 @@ export function isParallelogramSides(lengths: number[]): boolean {
   }
 
   for (const length of lengths) {
-    if (typeof length !== "number" || Number.isNaN(length)) {
+    if (Number.isNaN(length)) {
       throw new Error("Toate valorile trebuie sa fie numere.");
     }
     if (length <= 0) {
@@ -82,6 +82,10 @@ export async function runParallelogramCli(): Promise<void> {
   }
 }
 
-if (require.main === module) {
+// Run CLI if not in a test environment
+// Jest and other test runners define these globals
+const isJestTest = typeof jest !== 'undefined' || typeof afterEach !== 'undefined';
+
+if (!isJestTest) {
   void runParallelogramCli();
 }
