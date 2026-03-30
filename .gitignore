@@ -1,5 +1,5 @@
 /discount-project/node_modules
-node_modules
+node_modules/
 /paralelogram-check/dist
 dist
 /.vscode
@@ -7,3 +7,9 @@ dist
 /my_dbase_join.session.sql
 /my_dbase_internship.session.sql
 /.idea
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
