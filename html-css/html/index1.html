@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            color: #5bc0de; /* Light blue color from the image */
+            line-height: 1.6;
+        }
+
+        h3, label, legend {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="date"],
+        select,
+        textarea {
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            padding: 4px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* Checkbox and Radio alignment */
+        .choice-group {
+            margin-bottom: 15px;
+        }
+
+        .choice-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2px;
+        }
+
+        .choice-item input {
+            margin-right: 8px;
+            order: -1; /* Puts checkbox/radio before the text */
+        }
+
+        .choice-item label {
+            margin-bottom: 0;
+            cursor: pointer;
+        }
+
+        textarea {
+            width: 350px;
+            height: 150px;
+        }
+
+        input[type="submit"] {
+            background-color: #f0f0f0;
+            border: 1px solid #767676;
+            padding: 2px 10px;
+            cursor: pointer;
+            border-radius: 2px;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+    <form>
+        <label for="fname">First name:</label>
+        <input type="text" id="fname" name="fname">
+
+        <label for="lname">Last name:</label>
+        <input type="text" id="lname" name="lname">
+
+        <label for="dob">Date of birth:</label>
+        <input type="date" id="dob" name="dob">
+
+        <label for="country">Country:</label>
+        <select id="country" name="country">
+            <option value="moldova">Moldova</option>
+            <option value="usa">USA</option>
+            <option value="uk">UK</option>
+        </select>
+
+        <label>Interests:</label>
+        <div class="choice-group">
+            <div class="choice-item"><label for="html">HTML</label><input type="checkbox" id="html" name="interest" value="html"></div>
+            <div class="choice-item"><label for="js">Javascript</label><input type="checkbox" id="js" name="interest" value="javascript"></div>
+            <div class="choice-item"><label for="css">CSS</label><input type="checkbox" id="css" name="interest" value="css"></div>
+            <div class="choice-item"><label for="php">PHP</label><input type="checkbox" id="php" name="interest" value="php"></div>
+        </div>
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email">
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password">
+
+        <label>How often should Newsletters be sent?</label>
+        <div class="choice-group">
+            <div class="choice-item"><label for="weekly">Weekly</label><input type="radio" id="weekly" name="newsletter" value="weekly"></div>
+            <div class="choice-item"><label for="monthly">Monthly</label><input type="radio" id="monthly" name="newsletter" value="monthly"></div>
+            <div class="choice-item"><label for="never">Never</label><input type="radio" id="never" name="newsletter" value="never"></div>
+        </div>
+
+        <label for="feedback">Feedback about the form:</label>
+        <textarea id="feedback" name="feedback"></textarea>
+
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+
+</body>
+</html>
