@@ -9,6 +9,24 @@
       background-color: #fdf6ff;
       margin: 0;
       padding: 20px;
+      box-sizing: border-box;
+    }
+    *, *::before, *::after {
+      box-sizing: inherit;
+    }
+    .card-wrapper {
+      border: 2px solid #bfbfbf;
+      padding: 20px;
+      margin: 0;
+      min-height: calc(100vh - 40px);
+    }
+    .card-wrapper legend {
+      padding: 0 8px;
+    }
+    .legend-logo {
+      height: 24px;
+      width: auto;
+      display: block;
     }
     .container {
       display: flex;
@@ -18,18 +36,55 @@
     .left {
       width: 20%;
       font-weight: bold;
+      display: flex;
+    }
+    .left-words {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      min-height: 560px;
+      margin: 0;
+      padding: 0;
+    }
+    .word-group {
+      position: relative;
+    }
+    .birthday-group {
+      margin: 18px 0;
     }
     .left ul {
       list-style-type: disc;
       padding-left: 20px;
       line-height: 1.6;
+      margin: 0;
+    }
+    .left .word-gap {
+      height: 24px;
     }
     .center {
       width: 40%;
-      text-align: left;
+      text-align: center;
+      padding-top: 170px;
     }
     .center h1 {
       color: #8a2be2;
+      margin: 0 0 16px;
+      font-size: 52px;
+      line-height: 1;
+      text-align: center;
+    }
+    .center-divider {
+      width: 100%;
+      border: none;
+      border-top: 4px solid #c9c9c9;
+      margin: 18px 0 18px;
+    }
+    .center p {
+      margin: 0;
+      font-size: 18px;
+      line-height: 1.4;
+      text-align: center;
     }
     .right {
       width: 35%;
@@ -49,55 +104,80 @@
       border-radius: 5px;
       font-weight: bold;
     }
+    .bottom-divider {
+      width: 100%;
+      border: none;
+      border-top: 4px solid #c9c9c9;
+      margin: 16px 0 0;
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- Left side: vertical letters -->
-    <div class="left">
-      <ul>
-        <li>H</li>
-        <li>a</li>
-        <li>p</li>
-        <li>p</li>
-        <li>y</li>
-        <li>B</li>
-        <li>i</li>
-        <li>r</li>
-        <li>t</li>
-        <li>h</li>
-        <li>d</li>
-        <li>a</li>
-        <li>y</li>
-        <li>P</li>
-        <li>o</li>
-        <li>s</li>
-        <li>t</li>
-        <li>c</li>
-        <li>a</li>
-        <li>r</li>
-        <li>d</li>
-      </ul>
-    </div>
+  <fieldset class="card-wrapper">
+    <legend>
+      <img src="../images/frunze-legend.png" alt="Legend" class="legend-logo">
+    </legend>
+    <div class="container">
+      <!-- Left side: vertical letters -->
+      <div class="left">
+        <div class="left-words">
+          <div class="word-group">
+            <ul>
+              <li>H</li>
+              <li>a</li>
+              <li>p</li>
+              <li>p</li>
+              <li>y</li>
+            </ul>
+          </div>
+          <div class="word-group birthday-group">
+            <ul>
+              <li>B</li>
+              <li>i</li>
+              <li>r</li>
+              <li>t</li>
+              <li>h</li>
+              <li>d</li>
+              <li>a</li>
+              <li>y</li>
+            </ul>
+          </div>
+          <div class="word-group">
+            <ul>
+              <li>P</li>
+              <li>o</li>
+              <li>s</li>
+              <li>t</li>
+              <li>c</li>
+              <li>a</li>
+              <li>r</li>
+              <li>d</li>
+            </ul>
+          </div>
+        </div>
+      </div>
 
-    <!-- Center: birthday message -->
-    <div class="center">
-      <h1>Happy Birthday!</h1>
-      <p>
-        Birthdays are good for you.<br>
-        Statistics show that people who have the most live the longest!<br>
-        May this year be your best ever.
-      </p>
-    </div>
+      <!-- Center: birthday message -->
+      <div class="center">
+        <h1>Happy Birthday!</h1>
+        <hr class="center-divider">
+        <p>
+          Birthdays are good for you.<br>
+          Statistics show that people who have the most live the longest!<br>
+          May this year be your best ever.
+        </p>
+      </div>
 
-    <!-- Right: image and button -->
-    <div class="right">
-      <a href="happy.png">
-        <img src="happy.png" alt="Birthday Graphic">
-      </a>
-      <p>Click on image for your B-day song!!!</p>
-      <a href="index1.html" class="button">Click for your B-day gift</a>
+      <!-- Right: image and button -->
+      <div class="right">
+        <a href="../images/happy.png">
+          <img src="../images/happy.png" alt="Birthday Graphic">
+        </a>
+        <p>Click on image for your B-day song!!!</p>
+        <a href="index1.html" class="button">Click for your B-day gift</a>
+        <hr class="bottom-divider">
+      </div>
     </div>
-  </div>
+  </fieldset>
 </body>
 </html>
