@@ -1,0 +1,641 @@
+{
+  "info": {
+    "_postman_id": "1ca22243-c60e-45ce-abd2-37e07628c7e4",
+    "name": "My Collection 1",
+    "description": "### Welcome to Postman! This is your first collection. \n\nCollections are your starting point for building and testing APIs. You can use this one to:\n\n• Group related requests\n• Test your API in real-world scenarios\n• Document and share your requests\n\nUpdate the name and overview whenever you’re ready to make it yours.\n\n[Learn more about Postman Collections.](https://learning.postman.com/docs/collections/collections-overview/)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53863108",
+    "_collection_link": "https://go.postman.co/collection/53863108-1ca22243-c60e-45ce-abd2-37e07628c7e4?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Status Collection",
+      "item": [
+        {
+          "name": "Get API Status",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "pm.response.to.have.status(200);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://goal-tracker-api.onrender.com/api/v1/status",
+              "protocol": "https",
+              "host": [
+                "goal-tracker-api",
+                "onrender",
+                "com"
+              ],
+              "path": [
+                "api",
+                "v1",
+                "status"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "User Collection",
+      "item": [
+        {
+          "name": "Register",
+          "item": [
+            {
+              "name": "Register User Success",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Peter Pen\",\r\n    \"email\": \"peter_pen@gmail.com\",\r\n    \"password\": \"Password456\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://goal-tracker-api.onrender.com/api/v1/auth/register",
+                  "protocol": "https",
+                  "host": [
+                    "goal-tracker-api",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth",
+                    "register"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Register User Mail already taken",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Peter Pen\",\r\n    \"email\": \"peter_pen@gmail.com\",\r\n    \"password\": \"Password456\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://goal-tracker-api.onrender.com/api/v1/auth/register",
+                  "protocol": "https",
+                  "host": [
+                    "goal-tracker-api",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth",
+                    "register"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Register User invalid Mail",
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Peter Pen\",\r\n    \"email\": \"peter_pen\",\r\n    \"password\": \"Password456\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://goal-tracker-api.onrender.com/api/v1/auth/register",
+                  "protocol": "https",
+                  "host": [
+                    "goal-tracker-api",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth",
+                    "register"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Login",
+          "item": [
+            {
+              "name": "Login User Success",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"peter_pen@gmail.com\",\r\n    \"password\": \"Password456\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://goal-tracker-api.onrender.com/api/v1/auth/login",
+                  "protocol": "https",
+                  "host": [
+                    "goal-tracker-api",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Login User Invalid Data",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n   \r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://goal-tracker-api.onrender.com/api/v1/auth/login",
+                  "protocol": "https",
+                  "host": [
+                    "goal-tracker-api",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Login User Invalid Mail",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"peter_pen@gmail\",\r\n    \"password\": \"Password456\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://goal-tracker-api.onrender.com/api/v1/auth/login",
+                  "protocol": "https",
+                  "host": [
+                    "goal-tracker-api",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Login User Invalid password",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"email\": \"peter_pen@gmail.com\",\r\n    \"password\": \"Passwor\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://goal-tracker-api.onrender.com/api/v1/auth/login",
+                  "protocol": "https",
+                  "host": [
+                    "goal-tracker-api",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth",
+                    "login"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Update",
+          "item": [
+            {
+              "name": "Update User Password Success",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUGV0ZXIgUGVuIiwidXNlcklkIjoiNjllN2FmMzkyMzkyNzE5MDc3ZTViNzBhIiwiZW1haWwiOiJwZXRlcl9wZW5AZ21haWwuY29tIiwiaWF0IjoxNzc2NzkxNDU2LCJleHAiOjE3NzkzODM0NTZ9.QRgi7x0nSQC1Uh1XYY7VYPTnzCR_BG6_X8uCGv3eGdw",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Peter Pen\",\r\n    \"email\": \"peter_pen@gmail.com\",\r\n    \"oldPassword\": \"Password456\",\r\n    \"newPassword\": \"Password789\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://goal-tracker-api.onrender.com/api/v1/auth/updateprofile",
+                  "protocol": "https",
+                  "host": [
+                    "goal-tracker-api",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth",
+                    "updateprofile"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Update User Invalid Password Change",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUGV0ZXIgUGVuIiwidXNlcklkIjoiNjllN2FmMzkyMzkyNzE5MDc3ZTViNzBhIiwiZW1haWwiOiJwZXRlcl9wZW5AZ21haWwuY29tIiwiaWF0IjoxNzc2NzkxNDU2LCJleHAiOjE3NzkzODM0NTZ9.QRgi7x0nSQC1Uh1XYY7VYPTnzCR_BG6_X8uCGv3eGdw",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Peter Pen\",\r\n    \"email\": \"peter_pen@gmail.com\",\r\n    \"oldPassword\": \"Tralala\",\r\n    \"newPassword\": \"Password789\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://goal-tracker-api.onrender.com/api/v1/auth/updateprofile",
+                  "protocol": "https",
+                  "host": [
+                    "goal-tracker-api",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "auth",
+                    "updateprofile"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Goals Collection",
+      "item": [
+        {
+          "name": "Create Flow",
+          "item": [
+            {
+              "name": "Create Goal Success",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUGV0ZXIgUGVuIiwidXNlcklkIjoiNjllN2FmMzkyMzkyNzE5MDc3ZTViNzBhIiwiZW1haWwiOiJwZXRlcl9wZW5AZ21haWwuY29tIiwiaWF0IjoxNzc2NzkxNDU2LCJleHAiOjE3NzkzODM0NTZ9.QRgi7x0nSQC1Uh1XYY7VYPTnzCR_BG6_X8uCGv3eGdw",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"title\": \"Install Postman on PC\",\r\n    \"description\": \"Download and Install Postman on PC\",\r\n    \"priority\": \"medium\",\r\n    \"status\": \"completed\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://goal-tracker-api.onrender.com/api/v1/goals",
+                  "protocol": "https",
+                  "host": [
+                    "goal-tracker-api",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "goals"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Get Goals",
+          "item": [
+            {
+              "name": "Get all Goals",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUGV0ZXIgUGVuIiwidXNlcklkIjoiNjllN2FmMzkyMzkyNzE5MDc3ZTViNzBhIiwiZW1haWwiOiJwZXRlcl9wZW5AZ21haWwuY29tIiwiaWF0IjoxNzc2NzkxNDU2LCJleHAiOjE3NzkzODM0NTZ9.QRgi7x0nSQC1Uh1XYY7VYPTnzCR_BG6_X8uCGv3eGdw",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://goal-tracker-api.onrender.com/api/v1/goals",
+                  "protocol": "https",
+                  "host": [
+                    "goal-tracker-api",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "goals"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get filtered Goals",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUGV0ZXIgUGVuIiwidXNlcklkIjoiNjllN2FmMzkyMzkyNzE5MDc3ZTViNzBhIiwiZW1haWwiOiJwZXRlcl9wZW5AZ21haWwuY29tIiwiaWF0IjoxNzc2NzkxNDU2LCJleHAiOjE3NzkzODM0NTZ9.QRgi7x0nSQC1Uh1XYY7VYPTnzCR_BG6_X8uCGv3eGdw",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://goal-tracker-api.onrender.com/api/v1/goals?status=to-do&priority=high",
+                  "protocol": "https",
+                  "host": [
+                    "goal-tracker-api",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "goals"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "to-do"
+                    },
+                    {
+                      "key": "priority",
+                      "value": "high"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Update Goal",
+          "item": [
+            {
+              "name": "Update Goal",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUGV0ZXIgUGVuIiwidXNlcklkIjoiNjllN2FmMzkyMzkyNzE5MDc3ZTViNzBhIiwiZW1haWwiOiJwZXRlcl9wZW5AZ21haWwuY29tIiwiaWF0IjoxNzc2NzkxNDU2LCJleHAiOjE3NzkzODM0NTZ9.QRgi7x0nSQC1Uh1XYY7VYPTnzCR_BG6_X8uCGv3eGdw",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"status\": \"completed\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "https://goal-tracker-api.onrender.com/api/v1/goals/:69e7b7162392719077e5b735",
+                  "protocol": "https",
+                  "host": [
+                    "goal-tracker-api",
+                    "onrender",
+                    "com"
+                  ],
+                  "path": [
+                    "api",
+                    "v1",
+                    "goals",
+                    ":69e7b7162392719077e5b735"
+                  ],
+                  "variable": [
+                    {
+                      "key": "69e7b7162392719077e5b735",
+                      "value": "69e7b7162392719077e5b735"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
