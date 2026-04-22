@@ -1,0 +1,6336 @@
+{
+  "collection": {
+    "_": {
+      "postman_id": "3a63efc9-c2ad-4171-be07-bc4ffc149c08",
+      "exporter_id": "53863108",
+      "collection_link": "https://go.postman.co/collection/53863108-3a63efc9-c2ad-4171-be07-bc4ffc149c08?source=collection_link"
+    },
+    "item": [
+      {
+        "id": "0d77e599-f370-405f-b019-9be250fdb83f",
+        "name": "Status Collection",
+        "item": [
+          {
+            "id": "04e90401-b307-48ce-8eca-c256e1fc24ab",
+            "name": "Get API Status",
+            "request": {
+              "url": {
+                "path": [
+                  "api",
+                  "v1",
+                  "status"
+                ],
+                "host": [
+                  "{{baseUrl}}"
+                ],
+                "query": [],
+                "variable": []
+              },
+              "method": "GET"
+            },
+            "response": [],
+            "event": [
+              {
+                "listen": "test",
+                "script": {
+                  "id": "bcc03a73-7fae-4420-b607-b3e29a19d276",
+                  "type": "text/javascript",
+                  "exec": [
+                    "pm.test(\"Status code is 200\", function () {\r",
+                    "pm.response.to.have.status(200);\r",
+                    "});"
+                  ],
+                  "_lastExecutionId": "22f4c89f-8fc9-4b98-a09d-a9b9b9511968"
+                }
+              }
+            ]
+          }
+        ],
+        "event": []
+      },
+      {
+        "id": "7cf50868-5af5-47ff-85c8-b8a5611ad179",
+        "name": "User Collection",
+        "item": [
+          {
+            "id": "3c24ae01-594b-436c-88c3-d344f2b45e43",
+            "name": "Register",
+            "item": [
+              {
+                "id": "b31128e6-d68e-4f50-903f-fb30c98f06b8",
+                "name": "Register User Success",
+                "request": {
+                  "url": {
+                    "path": [
+                      "api",
+                      "v1",
+                      "auth",
+                      "register"
+                    ],
+                    "host": [
+                      "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": []
+                  },
+                  "method": "POST",
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  }
+                },
+                "response": [],
+                "event": []
+              },
+              {
+                "id": "404ed9b5-f2ac-4aed-b263-28aeef5c5614",
+                "name": "Register User Mail already taken",
+                "request": {
+                  "url": {
+                    "path": [
+                      "api",
+                      "v1",
+                      "auth",
+                      "register"
+                    ],
+                    "host": [
+                      "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": []
+                  },
+                  "method": "POST",
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  }
+                },
+                "response": [],
+                "event": []
+              },
+              {
+                "id": "bfc490ba-14b5-4a82-9244-1ef7f5ede231",
+                "name": "Register User invalid Mail",
+                "request": {
+                  "url": {
+                    "path": [
+                      "api",
+                      "v1",
+                      "auth",
+                      "register"
+                    ],
+                    "host": [
+                      "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": []
+                  },
+                  "method": "POST",
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"invalid_email\",\r\n    \"password\": \"{{password}}\"\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  }
+                },
+                "response": [],
+                "event": []
+              }
+            ],
+            "event": []
+          },
+          {
+            "id": "ea2e5195-5fcb-4ab6-be0a-681a3f692fc2",
+            "name": "Login",
+            "item": [
+              {
+                "id": "e4360259-6771-4e21-aad6-94bd1ba6cdde",
+                "name": "Login User Success",
+                "request": {
+                  "url": {
+                    "path": [
+                      "api",
+                      "v1",
+                      "auth",
+                      "login"
+                    ],
+                    "host": [
+                      "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": []
+                  },
+                  "method": "POST",
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  }
+                },
+                "response": [],
+                "event": [
+                  {
+                    "listen": "test",
+                    "script": {
+                      "id": "9a42c7c4-7b51-4d80-9e60-2cfd5bee6662",
+                      "type": "text/javascript",
+                      "exec": [
+                        "pm.test(\"Status code is 200\", function () {\r",
+                        "    pm.response.to.have.status(200);\r",
+                        "});\r",
+                        "const responseJson = pm.response.json();\r",
+                        "pm.environment.set(\"tokenAccess\", responseJson.token);"
+                      ],
+                      "_lastExecutionId": "f9507640-5b9c-4355-994b-93c7cdf5259e"
+                    }
+                  }
+                ]
+              },
+              {
+                "id": "ebaa6986-5432-44e9-8353-fd0286d545f2",
+                "name": "Login User Invalid Data",
+                "request": {
+                  "url": {
+                    "path": [
+                      "api",
+                      "v1",
+                      "auth",
+                      "login"
+                    ],
+                    "host": [
+                      "{{baseUrl}}"
+                    ],
+                    "query": [],
+                    "variable": []
+                  },
+                  "method": "POST",
+                  "body": {
+                    "mode": "raw",
+                    "raw": "{}",
+                    "options": {
+                      "raw": {
+                        "language": "json"
+                      }
+                    }
+                  }
+                },
+                "response": [],
+                "event": []
+              }
+            ],
+            "event": []
+          }
+        ],
+        "event": []
+      }
+    ],
+    "event": [],
+    "variable": [
+      {
+        "type": "any",
+        "value": "",
+        "key": "tokenAccess"
+      },
+      {
+        "type": "any",
+        "value": "",
+        "key": "random_GoalTitle"
+      },
+      {
+        "type": "any",
+        "value": "",
+        "key": "random_GoalDescription"
+      }
+    ],
+    "info": {
+      "_postman_id": "3a63efc9-c2ad-4171-be07-bc4ffc149c08",
+      "name": "My Collection 2",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+      "description": {
+        "content": "### Welcome to Postman! This is your first collection.\n\nCollections are your starting point for building and testing APIs.",
+        "type": "text/plain"
+      }
+    }
+  },
+  "environment": {
+    "_": {
+      "postman_variable_scope": "environment",
+      "postman_exported_at": "2026-04-22T19:40:14.024Z",
+      "postman_exported_using": "Postman/12.7.4"
+    },
+    "id": "e465eac7-2962-4741-9d09-7781d01daf68",
+    "name": "Env1",
+    "values": [
+      {
+        "type": "any",
+        "value": "https://goal-tracker-api.onrender.com",
+        "key": "baseUrl"
+      },
+      {
+        "type": "any",
+        "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTWFyayBMZWUiLCJ1c2VySWQiOiI2OWU5MzA5ZDIzOTI3MTkwNzdlNWI5ODQiLCJlbWFpbCI6Im1hcmtfbGVlKzNAaG90bWFpbC5jb20iLCJpYXQiOjE3NzY4OTExMzgsImV4cCI6MTc3OTQ4MzEzOH0.HOqcIbQdtLz2GMjGsk1S8A-ZQv23U85htZhfxXyNgJA",
+        "key": "tokenAccess"
+      }
+    ]
+  },
+  "globals": {
+    "id": "96dc6ca1-a970-4465-a219-40a165041fdf",
+    "values": []
+  },
+  "run": {
+    "stats": {
+      "iterations": {
+        "total": 3,
+        "pending": 0,
+        "failed": 0
+      },
+      "items": {
+        "total": 18,
+        "pending": 0,
+        "failed": 0
+      },
+      "scripts": {
+        "total": 6,
+        "pending": 0,
+        "failed": 0
+      },
+      "prerequests": {
+        "total": 18,
+        "pending": 0,
+        "failed": 0
+      },
+      "requests": {
+        "total": 18,
+        "pending": 0,
+        "failed": 0
+      },
+      "tests": {
+        "total": 18,
+        "pending": 0,
+        "failed": 0
+      },
+      "assertions": {
+        "total": 6,
+        "pending": 0,
+        "failed": 0
+      },
+      "testScripts": {
+        "total": 6,
+        "pending": 0,
+        "failed": 0
+      },
+      "prerequestScripts": {
+        "total": 0,
+        "pending": 0,
+        "failed": 0
+      }
+    },
+    "timings": {
+      "responseAverage": 120.5,
+      "responseMin": 60,
+      "responseMax": 275,
+      "responseSd": 63.599659328228064,
+      "dnsAverage": 0,
+      "dnsMin": 0,
+      "dnsMax": 0,
+      "dnsSd": 0,
+      "firstByteAverage": 0,
+      "firstByteMin": 0,
+      "firstByteMax": 0,
+      "firstByteSd": 0,
+      "started": 1776891136643,
+      "completed": 1776891140355
+    },
+    "executions": [
+      {
+        "cursor": {
+          "position": 0,
+          "iteration": 0,
+          "length": 6,
+          "cycles": 3,
+          "empty": false,
+          "eof": false,
+          "bof": true,
+          "cr": false,
+          "ref": "a66e3763-6f08-48be-9e16-f24026affc4b",
+          "httpRequestId": "73e95e6a-af37-4323-aefe-4b534d7e75fd"
+        },
+        "item": {
+          "id": "04e90401-b307-48ce-8eca-c256e1fc24ab",
+          "name": "Get API Status",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "bcc03a73-7fae-4420-b607-b3e29a19d276",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "pm.response.to.have.status(200);\r",
+                  "});"
+                ],
+                "_lastExecutionId": "22f4c89f-8fc9-4b98-a09d-a9b9b9511968"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "api",
+              "v1",
+              "status"
+            ],
+            "host": [
+              "goal-tracker-api",
+              "onrender",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "81725f1e-835f-47e8-8157-89f6ecdc1723",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "goal-tracker-api.onrender.com",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            }
+          ],
+          "method": "GET"
+        },
+        "response": {
+          "id": "a79488f3-8ba2-416c-b9a9-99434ff614f2",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 22 Apr 2026 20:52:15 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "28"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "access-control-allow-origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "br"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+            },
+            {
+              "key": "cross-origin-opener-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "cross-origin-resource-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"18-HejVy9q0OHgLTp3iJRf1Q01GKMU\""
+            },
+            {
+              "key": "origin-agent-cluster",
+              "value": "?1"
+            },
+            {
+              "key": "referrer-policy",
+              "value": "no-referrer"
+            },
+            {
+              "key": "rndr-id",
+              "value": "2646ba52-7788-4da3"
+            },
+            {
+              "key": "strict-transport-security",
+              "value": "max-age=15552000; includeSubDomains"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-dns-prefetch-control",
+              "value": "off"
+            },
+            {
+              "key": "x-download-options",
+              "value": "noopen"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "x-permitted-cross-domain-policies",
+              "value": "none"
+            },
+            {
+              "key": "x-ratelimit-limit",
+              "value": "100"
+            },
+            {
+              "key": "x-ratelimit-remaining",
+              "value": "99"
+            },
+            {
+              "key": "x-ratelimit-reset",
+              "value": "1776891736"
+            },
+            {
+              "key": "x-render-origin-server",
+              "value": "Render"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "0"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "Server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "CF-RAY",
+              "value": "9f0782d92ec05e2e-KIV"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              115,
+              116,
+              97,
+              116,
+              117,
+              115,
+              34,
+              58,
+              34,
+              79,
+              80,
+              69,
+              82,
+              65,
+              84,
+              73,
+              79,
+              78,
+              65,
+              76,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 275,
+          "responseSize": 24
+        },
+        "id": "04e90401-b307-48ce-8eca-c256e1fc24ab",
+        "assertions": [
+          {
+            "assertion": "Status code is 200",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "d51b3554-12f9-465d-86d1-2ab6f766daf8",
+          "length": 6,
+          "cycles": 3,
+          "position": 1,
+          "iteration": 0,
+          "httpRequestId": "0be217ff-edd7-4553-a113-cd314a41064d"
+        },
+        "item": {
+          "id": "b31128e6-d68e-4f50-903f-fb30c98f06b8",
+          "name": "Register User Success",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "api",
+              "v1",
+              "auth",
+              "register"
+            ],
+            "host": [
+              "goal-tracker-api",
+              "onrender",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "system": true
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "7ae53685-b3a9-43bd-b203-90fbebe5e06f",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "goal-tracker-api.onrender.com",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "99",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\r\n    \"name\": \"John Smith\",\r\n    \"email\": \"john_smith+1@yahoo.com\",\r\n    \"password\": \"Passw111\"\r\n}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "response": {
+          "id": "8d8da80d-7201-4b16-ae0b-8d5e3adc8b65",
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 22 Apr 2026 20:52:15 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "42"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "access-control-allow-origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "br"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+            },
+            {
+              "key": "cross-origin-opener-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "cross-origin-resource-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"26-RWNl2D76qBrMP37Ied8xyDTFas8\""
+            },
+            {
+              "key": "origin-agent-cluster",
+              "value": "?1"
+            },
+            {
+              "key": "referrer-policy",
+              "value": "no-referrer"
+            },
+            {
+              "key": "rndr-id",
+              "value": "cfa60478-7908-4ac0"
+            },
+            {
+              "key": "strict-transport-security",
+              "value": "max-age=15552000; includeSubDomains"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-dns-prefetch-control",
+              "value": "off"
+            },
+            {
+              "key": "x-download-options",
+              "value": "noopen"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "x-permitted-cross-domain-policies",
+              "value": "none"
+            },
+            {
+              "key": "x-ratelimit-limit",
+              "value": "100"
+            },
+            {
+              "key": "x-ratelimit-remaining",
+              "value": "99"
+            },
+            {
+              "key": "x-ratelimit-reset",
+              "value": "1776891736"
+            },
+            {
+              "key": "x-render-origin-server",
+              "value": "Render"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "0"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "Server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "CF-RAY",
+              "value": "9f0782dadfd55e2e-KIV"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              109,
+              115,
+              103,
+              34,
+              58,
+              34,
+              69,
+              109,
+              97,
+              105,
+              108,
+              32,
+              97,
+              100,
+              100,
+              114,
+              101,
+              115,
+              115,
+              32,
+              97,
+              108,
+              114,
+              101,
+              97,
+              100,
+              121,
+              32,
+              101,
+              120,
+              105,
+              115,
+              116,
+              115,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 179,
+          "responseSize": 38
+        },
+        "id": "b31128e6-d68e-4f50-903f-fb30c98f06b8"
+      },
+      {
+        "cursor": {
+          "ref": "082d75dc-d081-4858-93bb-7e8fc03c810a",
+          "length": 6,
+          "cycles": 3,
+          "position": 2,
+          "iteration": 0,
+          "httpRequestId": "5c77090e-f883-4bd0-a6f3-a05dff64e2ae"
+        },
+        "item": {
+          "id": "404ed9b5-f2ac-4aed-b263-28aeef5c5614",
+          "name": "Register User Mail already taken",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "api",
+              "v1",
+              "auth",
+              "register"
+            ],
+            "host": [
+              "goal-tracker-api",
+              "onrender",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "system": true
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "696818ea-04c0-4268-bdf0-55c94e5e08c0",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "goal-tracker-api.onrender.com",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "99",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\r\n    \"name\": \"John Smith\",\r\n    \"email\": \"john_smith+1@yahoo.com\",\r\n    \"password\": \"Passw111\"\r\n}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "response": {
+          "id": "69573a75-8aa8-405d-add2-40a094fe9bcb",
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 22 Apr 2026 20:52:15 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "42"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "access-control-allow-origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "br"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+            },
+            {
+              "key": "cross-origin-opener-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "cross-origin-resource-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"26-RWNl2D76qBrMP37Ied8xyDTFas8\""
+            },
+            {
+              "key": "origin-agent-cluster",
+              "value": "?1"
+            },
+            {
+              "key": "referrer-policy",
+              "value": "no-referrer"
+            },
+            {
+              "key": "rndr-id",
+              "value": "a4fc6e10-d202-4a88"
+            },
+            {
+              "key": "strict-transport-security",
+              "value": "max-age=15552000; includeSubDomains"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-dns-prefetch-control",
+              "value": "off"
+            },
+            {
+              "key": "x-download-options",
+              "value": "noopen"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "x-permitted-cross-domain-policies",
+              "value": "none"
+            },
+            {
+              "key": "x-ratelimit-limit",
+              "value": "100"
+            },
+            {
+              "key": "x-ratelimit-remaining",
+              "value": "98"
+            },
+            {
+              "key": "x-ratelimit-reset",
+              "value": "1776891736"
+            },
+            {
+              "key": "x-render-origin-server",
+              "value": "Render"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "0"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "Server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "CF-RAY",
+              "value": "9f0782dc88c65e2e-KIV"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              109,
+              115,
+              103,
+              34,
+              58,
+              34,
+              69,
+              109,
+              97,
+              105,
+              108,
+              32,
+              97,
+              100,
+              100,
+              114,
+              101,
+              115,
+              115,
+              32,
+              97,
+              108,
+              114,
+              101,
+              97,
+              100,
+              121,
+              32,
+              101,
+              120,
+              105,
+              115,
+              116,
+              115,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 89,
+          "responseSize": 38
+        },
+        "id": "404ed9b5-f2ac-4aed-b263-28aeef5c5614"
+      },
+      {
+        "cursor": {
+          "ref": "322358b3-c4f4-4038-86a3-156e0b373ede",
+          "length": 6,
+          "cycles": 3,
+          "position": 3,
+          "iteration": 0,
+          "httpRequestId": "b1690426-a78f-4bcd-9ccf-48ae37501ff1"
+        },
+        "item": {
+          "id": "bfc490ba-14b5-4a82-9244-1ef7f5ede231",
+          "name": "Register User invalid Mail",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"invalid_email\",\r\n    \"password\": \"{{password}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "api",
+              "v1",
+              "auth",
+              "register"
+            ],
+            "host": [
+              "goal-tracker-api",
+              "onrender",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "system": true
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "c2c61dd4-cfaf-4e25-b307-6bedff2965f5",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "goal-tracker-api.onrender.com",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "90",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\r\n    \"name\": \"John Smith\",\r\n    \"email\": \"invalid_email\",\r\n    \"password\": \"Passw111\"\r\n}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "response": {
+          "id": "23746ef6-0066-4814-a9fc-07ca5e29988a",
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 22 Apr 2026 20:52:15 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "47"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "access-control-allow-origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "br"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+            },
+            {
+              "key": "cross-origin-opener-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "cross-origin-resource-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"2e-L+aa2cqSMKnfIn0yiOOUh1xAvF8\""
+            },
+            {
+              "key": "origin-agent-cluster",
+              "value": "?1"
+            },
+            {
+              "key": "referrer-policy",
+              "value": "no-referrer"
+            },
+            {
+              "key": "rndr-id",
+              "value": "9cdd78ee-f409-4260"
+            },
+            {
+              "key": "strict-transport-security",
+              "value": "max-age=15552000; includeSubDomains"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-dns-prefetch-control",
+              "value": "off"
+            },
+            {
+              "key": "x-download-options",
+              "value": "noopen"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "x-permitted-cross-domain-policies",
+              "value": "none"
+            },
+            {
+              "key": "x-ratelimit-limit",
+              "value": "100"
+            },
+            {
+              "key": "x-ratelimit-remaining",
+              "value": "97"
+            },
+            {
+              "key": "x-ratelimit-reset",
+              "value": "1776891736"
+            },
+            {
+              "key": "x-render-origin-server",
+              "value": "Render"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "0"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "Server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "CF-RAY",
+              "value": "9f0782dd995c5e2e-KIV"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              109,
+              115,
+              103,
+              34,
+              58,
+              34,
+              80,
+              108,
+              101,
+              97,
+              115,
+              101,
+              32,
+              112,
+              114,
+              111,
+              118,
+              105,
+              100,
+              101,
+              32,
+              97,
+              32,
+              118,
+              97,
+              108,
+              105,
+              100,
+              32,
+              101,
+              109,
+              97,
+              105,
+              108,
+              32,
+              97,
+              100,
+              100,
+              114,
+              101,
+              115,
+              115,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 89,
+          "responseSize": 46
+        },
+        "id": "bfc490ba-14b5-4a82-9244-1ef7f5ede231"
+      },
+      {
+        "cursor": {
+          "ref": "1de7e924-a0b3-4745-9d56-bcb9a0ddb5fc",
+          "length": 6,
+          "cycles": 3,
+          "position": 4,
+          "iteration": 0,
+          "httpRequestId": "d9ca9395-3e4d-4881-b1d0-5d3f59a93639"
+        },
+        "item": {
+          "id": "e4360259-6771-4e21-aad6-94bd1ba6cdde",
+          "name": "Login User Success",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9a42c7c4-7b51-4d80-9e60-2cfd5bee6662",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "const responseJson = pm.response.json();\r",
+                  "pm.environment.set(\"tokenAccess\", responseJson.token);"
+                ],
+                "_lastExecutionId": "f9507640-5b9c-4355-994b-93c7cdf5259e"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "api",
+              "v1",
+              "auth",
+              "login"
+            ],
+            "host": [
+              "goal-tracker-api",
+              "onrender",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "system": true
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "f8e09e19-bb24-4ea3-82a8-0f4b5d6ed944",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "goal-tracker-api.onrender.com",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "72",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\r\n    \"email\": \"john_smith+1@yahoo.com\",\r\n    \"password\": \"Passw111\"\r\n}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "response": {
+          "id": "a6fc1cd7-6903-4beb-86e8-9c700e37a8bb",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 22 Apr 2026 20:52:15 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "241"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "access-control-allow-origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "br"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+            },
+            {
+              "key": "cross-origin-opener-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "cross-origin-resource-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"122-o20NX8TYSL+O19WonhrzMYfsiFs\""
+            },
+            {
+              "key": "origin-agent-cluster",
+              "value": "?1"
+            },
+            {
+              "key": "referrer-policy",
+              "value": "no-referrer"
+            },
+            {
+              "key": "rndr-id",
+              "value": "2513c316-3c0c-45e6"
+            },
+            {
+              "key": "strict-transport-security",
+              "value": "max-age=15552000; includeSubDomains"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-dns-prefetch-control",
+              "value": "off"
+            },
+            {
+              "key": "x-download-options",
+              "value": "noopen"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "x-permitted-cross-domain-policies",
+              "value": "none"
+            },
+            {
+              "key": "x-ratelimit-limit",
+              "value": "100"
+            },
+            {
+              "key": "x-ratelimit-remaining",
+              "value": "96"
+            },
+            {
+              "key": "x-ratelimit-reset",
+              "value": "1776891736"
+            },
+            {
+              "key": "x-render-origin-server",
+              "value": "Render"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "0"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "Server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "CF-RAY",
+              "value": "9f0782deb9dd5e2e-KIV"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              109,
+              115,
+              103,
+              34,
+              58,
+              34,
+              83,
+              117,
+              99,
+              99,
+              101,
+              115,
+              115,
+              102,
+              117,
+              108,
+              108,
+              121,
+              32,
+              108,
+              111,
+              103,
+              103,
+              101,
+              100,
+              32,
+              105,
+              110,
+              34,
+              44,
+              34,
+              116,
+              111,
+              107,
+              101,
+              110,
+              34,
+              58,
+              34,
+              101,
+              121,
+              74,
+              104,
+              98,
+              71,
+              99,
+              105,
+              79,
+              105,
+              74,
+              73,
+              85,
+              122,
+              73,
+              49,
+              78,
+              105,
+              73,
+              115,
+              73,
+              110,
+              82,
+              53,
+              99,
+              67,
+              73,
+              54,
+              73,
+              107,
+              112,
+              88,
+              86,
+              67,
+              74,
+              57,
+              46,
+              101,
+              121,
+              74,
+              117,
+              89,
+              87,
+              49,
+              108,
+              73,
+              106,
+              111,
+              105,
+              83,
+              109,
+              57,
+              111,
+              98,
+              105,
+              66,
+              84,
+              98,
+              87,
+              108,
+              48,
+              97,
+              67,
+              73,
+              115,
+              73,
+              110,
+              86,
+              122,
+              90,
+              88,
+              74,
+              74,
+              90,
+              67,
+              73,
+              54,
+              73,
+              106,
+              89,
+              53,
+              90,
+              84,
+              107,
+              122,
+              77,
+              68,
+              108,
+              105,
+              77,
+              106,
+              77,
+              53,
+              77,
+              106,
+              99,
+              120,
+              79,
+              84,
+              65,
+              51,
+              78,
+              50,
+              85,
+              49,
+              89,
+              106,
+              107,
+              51,
+              78,
+              105,
+              73,
+              115,
+              73,
+              109,
+              86,
+              116,
+              89,
+              87,
+              108,
+              115,
+              73,
+              106,
+              111,
+              105,
+              97,
+              109,
+              57,
+              111,
+              98,
+              108,
+              57,
+              122,
+              98,
+              87,
+              108,
+              48,
+              97,
+              67,
+              115,
+              120,
+              81,
+              72,
+              108,
+              104,
+              97,
+              71,
+              57,
+              118,
+              76,
+              109,
+              78,
+              118,
+              98,
+              83,
+              73,
+              115,
+              73,
+              109,
+              108,
+              104,
+              100,
+              67,
+              73,
+              54,
+              77,
+              84,
+              99,
+              51,
+              78,
+              106,
+              103,
+              53,
+              77,
+              84,
+              69,
+              122,
+              78,
+              83,
+              119,
+              105,
+              90,
+              88,
+              104,
+              119,
+              73,
+              106,
+              111,
+              120,
+              78,
+              122,
+              99,
+              53,
+              78,
+              68,
+              103,
+              122,
+              77,
+              84,
+              77,
+              49,
+              102,
+              81,
+              46,
+              71,
+              101,
+              51,
+              103,
+              87,
+              78,
+              45,
+              85,
+              108,
+              102,
+              77,
+              74,
+              80,
+              68,
+              98,
+              111,
+              86,
+              105,
+              86,
+              66,
+              107,
+              102,
+              49,
+              99,
+              86,
+              99,
+              102,
+              54,
+              54,
+              69,
+              88,
+              53,
+              102,
+              73,
+              66,
+              55,
+              102,
+              112,
+              49,
+              110,
+              74,
+              48,
+              69,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 205,
+          "responseSize": 290
+        },
+        "id": "e4360259-6771-4e21-aad6-94bd1ba6cdde",
+        "assertions": [
+          {
+            "assertion": "Status code is 200",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "22d682ae-39a4-40d6-89f8-cdeb26466e03",
+          "length": 6,
+          "cycles": 3,
+          "position": 5,
+          "iteration": 0,
+          "httpRequestId": "7ae7b8af-ddaf-4fde-8631-e7cb829a0d47"
+        },
+        "item": {
+          "id": "ebaa6986-5432-44e9-8353-fd0286d545f2",
+          "name": "Login User Invalid Data",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "api",
+              "v1",
+              "auth",
+              "login"
+            ],
+            "host": [
+              "goal-tracker-api",
+              "onrender",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "system": true
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "91c6486b-9a76-497e-8e8f-74557a947589",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "goal-tracker-api.onrender.com",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "2",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "response": {
+          "id": "9c49c74c-6ef1-4111-822c-bfc151535ab7",
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 22 Apr 2026 20:52:16 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "49"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "access-control-allow-origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "br"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+            },
+            {
+              "key": "cross-origin-opener-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "cross-origin-resource-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"36-dA4h7fMzZa9miovTEDT1LQmvDc0\""
+            },
+            {
+              "key": "origin-agent-cluster",
+              "value": "?1"
+            },
+            {
+              "key": "referrer-policy",
+              "value": "no-referrer"
+            },
+            {
+              "key": "rndr-id",
+              "value": "8afa675b-9b89-41c1"
+            },
+            {
+              "key": "strict-transport-security",
+              "value": "max-age=15552000; includeSubDomains"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-dns-prefetch-control",
+              "value": "off"
+            },
+            {
+              "key": "x-download-options",
+              "value": "noopen"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "x-permitted-cross-domain-policies",
+              "value": "none"
+            },
+            {
+              "key": "x-ratelimit-limit",
+              "value": "100"
+            },
+            {
+              "key": "x-ratelimit-remaining",
+              "value": "95"
+            },
+            {
+              "key": "x-ratelimit-reset",
+              "value": "1776891736"
+            },
+            {
+              "key": "x-render-origin-server",
+              "value": "Render"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "0"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "Server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "CF-RAY",
+              "value": "9f0782e09adc5e2e-KIV"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              109,
+              115,
+              103,
+              34,
+              58,
+              34,
+              80,
+              108,
+              101,
+              97,
+              115,
+              101,
+              32,
+              112,
+              114,
+              111,
+              118,
+              105,
+              100,
+              101,
+              32,
+              97,
+              110,
+              32,
+              101,
+              109,
+              97,
+              105,
+              108,
+              32,
+              97,
+              100,
+              100,
+              114,
+              101,
+              115,
+              115,
+              32,
+              97,
+              110,
+              100,
+              32,
+              112,
+              97,
+              115,
+              115,
+              119,
+              111,
+              114,
+              100,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 60,
+          "responseSize": 54
+        },
+        "id": "ebaa6986-5432-44e9-8353-fd0286d545f2"
+      },
+      {
+        "cursor": {
+          "ref": "d1d3b456-d991-4b28-8ff8-1dbec00e8456",
+          "length": 6,
+          "cycles": 3,
+          "position": 0,
+          "iteration": 1,
+          "cr": true,
+          "httpRequestId": "04cebd50-ff23-43ff-8cbd-23d73e47120c"
+        },
+        "item": {
+          "id": "04e90401-b307-48ce-8eca-c256e1fc24ab",
+          "name": "Get API Status",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "bcc03a73-7fae-4420-b607-b3e29a19d276",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "pm.response.to.have.status(200);\r",
+                  "});"
+                ],
+                "_lastExecutionId": "22f4c89f-8fc9-4b98-a09d-a9b9b9511968"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "api",
+              "v1",
+              "status"
+            ],
+            "host": [
+              "goal-tracker-api",
+              "onrender",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "14ea3f17-773f-4e70-9382-c66c8a17a6ba",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "goal-tracker-api.onrender.com",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            }
+          ],
+          "method": "GET"
+        },
+        "response": {
+          "id": "3349b063-7d78-4b4e-b0cf-f1804f4f6842",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 22 Apr 2026 20:52:16 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "28"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "access-control-allow-origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "br"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+            },
+            {
+              "key": "cross-origin-opener-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "cross-origin-resource-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"18-HejVy9q0OHgLTp3iJRf1Q01GKMU\""
+            },
+            {
+              "key": "origin-agent-cluster",
+              "value": "?1"
+            },
+            {
+              "key": "referrer-policy",
+              "value": "no-referrer"
+            },
+            {
+              "key": "rndr-id",
+              "value": "03036e82-2dc4-4cb1"
+            },
+            {
+              "key": "strict-transport-security",
+              "value": "max-age=15552000; includeSubDomains"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-dns-prefetch-control",
+              "value": "off"
+            },
+            {
+              "key": "x-download-options",
+              "value": "noopen"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "x-permitted-cross-domain-policies",
+              "value": "none"
+            },
+            {
+              "key": "x-ratelimit-limit",
+              "value": "100"
+            },
+            {
+              "key": "x-ratelimit-remaining",
+              "value": "94"
+            },
+            {
+              "key": "x-ratelimit-reset",
+              "value": "1776891736"
+            },
+            {
+              "key": "x-render-origin-server",
+              "value": "Render"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "0"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "Server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "CF-RAY",
+              "value": "9f0782e17b565e2e-KIV"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              115,
+              116,
+              97,
+              116,
+              117,
+              115,
+              34,
+              58,
+              34,
+              79,
+              80,
+              69,
+              82,
+              65,
+              84,
+              73,
+              79,
+              78,
+              65,
+              76,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 64,
+          "responseSize": 24
+        },
+        "id": "04e90401-b307-48ce-8eca-c256e1fc24ab",
+        "assertions": [
+          {
+            "assertion": "Status code is 200",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "08f35fcc-f855-48c5-b171-f92f5fbc1150",
+          "length": 6,
+          "cycles": 3,
+          "position": 1,
+          "iteration": 1,
+          "httpRequestId": "b282487e-6f65-4f49-a6c6-f5c7e50f0e14"
+        },
+        "item": {
+          "id": "b31128e6-d68e-4f50-903f-fb30c98f06b8",
+          "name": "Register User Success",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "api",
+              "v1",
+              "auth",
+              "register"
+            ],
+            "host": [
+              "goal-tracker-api",
+              "onrender",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "system": true
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "50c3eedc-3ee8-455c-a794-8bd8aac3009b",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "goal-tracker-api.onrender.com",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "95",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\r\n    \"name\": \"Jane Doe\",\r\n    \"email\": \"jane_doe+2@gmail.com\",\r\n    \"password\": \"Passw222\"\r\n}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "response": {
+          "id": "517f0bda-e7e8-42b7-9fe5-c3b6e45db378",
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 22 Apr 2026 20:52:16 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "42"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "access-control-allow-origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "br"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+            },
+            {
+              "key": "cross-origin-opener-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "cross-origin-resource-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"26-RWNl2D76qBrMP37Ied8xyDTFas8\""
+            },
+            {
+              "key": "origin-agent-cluster",
+              "value": "?1"
+            },
+            {
+              "key": "referrer-policy",
+              "value": "no-referrer"
+            },
+            {
+              "key": "rndr-id",
+              "value": "f31cb700-4d90-44d2"
+            },
+            {
+              "key": "strict-transport-security",
+              "value": "max-age=15552000; includeSubDomains"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-dns-prefetch-control",
+              "value": "off"
+            },
+            {
+              "key": "x-download-options",
+              "value": "noopen"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "x-permitted-cross-domain-policies",
+              "value": "none"
+            },
+            {
+              "key": "x-ratelimit-limit",
+              "value": "100"
+            },
+            {
+              "key": "x-ratelimit-remaining",
+              "value": "93"
+            },
+            {
+              "key": "x-ratelimit-reset",
+              "value": "1776891736"
+            },
+            {
+              "key": "x-render-origin-server",
+              "value": "Render"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "0"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "Server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "CF-RAY",
+              "value": "9f0782e27bdb5e2e-KIV"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              109,
+              115,
+              103,
+              34,
+              58,
+              34,
+              69,
+              109,
+              97,
+              105,
+              108,
+              32,
+              97,
+              100,
+              100,
+              114,
+              101,
+              115,
+              115,
+              32,
+              97,
+              108,
+              114,
+              101,
+              97,
+              100,
+              121,
+              32,
+              101,
+              120,
+              105,
+              115,
+              116,
+              115,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 104,
+          "responseSize": 38
+        },
+        "id": "b31128e6-d68e-4f50-903f-fb30c98f06b8"
+      },
+      {
+        "cursor": {
+          "ref": "1a448add-7d68-4ebd-a054-7fb174bd99a6",
+          "length": 6,
+          "cycles": 3,
+          "position": 2,
+          "iteration": 1,
+          "httpRequestId": "bfd4602c-e181-47ca-af19-a9fd575842b3"
+        },
+        "item": {
+          "id": "404ed9b5-f2ac-4aed-b263-28aeef5c5614",
+          "name": "Register User Mail already taken",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "api",
+              "v1",
+              "auth",
+              "register"
+            ],
+            "host": [
+              "goal-tracker-api",
+              "onrender",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "system": true
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "f95707f9-a5a3-41c5-bced-76167b0e3e46",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "goal-tracker-api.onrender.com",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "95",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\r\n    \"name\": \"Jane Doe\",\r\n    \"email\": \"jane_doe+2@gmail.com\",\r\n    \"password\": \"Passw222\"\r\n}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "response": {
+          "id": "d26d85f3-1883-4cd8-8789-743ad213678b",
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 22 Apr 2026 20:52:16 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "42"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "access-control-allow-origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "br"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+            },
+            {
+              "key": "cross-origin-opener-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "cross-origin-resource-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"26-RWNl2D76qBrMP37Ied8xyDTFas8\""
+            },
+            {
+              "key": "origin-agent-cluster",
+              "value": "?1"
+            },
+            {
+              "key": "referrer-policy",
+              "value": "no-referrer"
+            },
+            {
+              "key": "rndr-id",
+              "value": "f413aabe-e0dd-4deb"
+            },
+            {
+              "key": "strict-transport-security",
+              "value": "max-age=15552000; includeSubDomains"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-dns-prefetch-control",
+              "value": "off"
+            },
+            {
+              "key": "x-download-options",
+              "value": "noopen"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "x-permitted-cross-domain-policies",
+              "value": "none"
+            },
+            {
+              "key": "x-ratelimit-limit",
+              "value": "100"
+            },
+            {
+              "key": "x-ratelimit-remaining",
+              "value": "92"
+            },
+            {
+              "key": "x-ratelimit-reset",
+              "value": "1776891736"
+            },
+            {
+              "key": "x-render-origin-server",
+              "value": "Render"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "0"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "Server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "CF-RAY",
+              "value": "9f0782e39c965e2e-KIV"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              109,
+              115,
+              103,
+              34,
+              58,
+              34,
+              69,
+              109,
+              97,
+              105,
+              108,
+              32,
+              97,
+              100,
+              100,
+              114,
+              101,
+              115,
+              115,
+              32,
+              97,
+              108,
+              114,
+              101,
+              97,
+              100,
+              121,
+              32,
+              101,
+              120,
+              105,
+              115,
+              116,
+              115,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 89,
+          "responseSize": 38
+        },
+        "id": "404ed9b5-f2ac-4aed-b263-28aeef5c5614"
+      },
+      {
+        "cursor": {
+          "ref": "50d0b809-38a8-4561-9c03-a962ceea797c",
+          "length": 6,
+          "cycles": 3,
+          "position": 3,
+          "iteration": 1,
+          "httpRequestId": "e303f852-4fc1-4414-9558-b0cab7f0ca7f"
+        },
+        "item": {
+          "id": "bfc490ba-14b5-4a82-9244-1ef7f5ede231",
+          "name": "Register User invalid Mail",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"invalid_email\",\r\n    \"password\": \"{{password}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "api",
+              "v1",
+              "auth",
+              "register"
+            ],
+            "host": [
+              "goal-tracker-api",
+              "onrender",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "system": true
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "3db0e818-bd59-4ae8-acaa-09938ca4c24e",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "goal-tracker-api.onrender.com",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "88",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\r\n    \"name\": \"Jane Doe\",\r\n    \"email\": \"invalid_email\",\r\n    \"password\": \"Passw222\"\r\n}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "response": {
+          "id": "7fbecc45-f5bc-4054-8824-eb1dee77caad",
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 22 Apr 2026 20:52:16 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "47"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "access-control-allow-origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "br"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+            },
+            {
+              "key": "cross-origin-opener-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "cross-origin-resource-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"2e-L+aa2cqSMKnfIn0yiOOUh1xAvF8\""
+            },
+            {
+              "key": "origin-agent-cluster",
+              "value": "?1"
+            },
+            {
+              "key": "referrer-policy",
+              "value": "no-referrer"
+            },
+            {
+              "key": "rndr-id",
+              "value": "dd70a5a9-48a8-446d"
+            },
+            {
+              "key": "strict-transport-security",
+              "value": "max-age=15552000; includeSubDomains"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-dns-prefetch-control",
+              "value": "off"
+            },
+            {
+              "key": "x-download-options",
+              "value": "noopen"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "x-permitted-cross-domain-policies",
+              "value": "none"
+            },
+            {
+              "key": "x-ratelimit-limit",
+              "value": "100"
+            },
+            {
+              "key": "x-ratelimit-remaining",
+              "value": "99"
+            },
+            {
+              "key": "x-ratelimit-reset",
+              "value": "1776891737"
+            },
+            {
+              "key": "x-render-origin-server",
+              "value": "Render"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "0"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "Server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "CF-RAY",
+              "value": "9f0782e4bd415e2e-KIV"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              109,
+              115,
+              103,
+              34,
+              58,
+              34,
+              80,
+              108,
+              101,
+              97,
+              115,
+              101,
+              32,
+              112,
+              114,
+              111,
+              118,
+              105,
+              100,
+              101,
+              32,
+              97,
+              32,
+              118,
+              97,
+              108,
+              105,
+              100,
+              32,
+              101,
+              109,
+              97,
+              105,
+              108,
+              32,
+              97,
+              100,
+              100,
+              114,
+              101,
+              115,
+              115,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 104,
+          "responseSize": 46
+        },
+        "id": "bfc490ba-14b5-4a82-9244-1ef7f5ede231"
+      },
+      {
+        "cursor": {
+          "ref": "45560e47-cdcd-454e-82ca-021cf2a0a641",
+          "length": 6,
+          "cycles": 3,
+          "position": 4,
+          "iteration": 1,
+          "httpRequestId": "687bcc85-2e91-4976-b7e1-063e0267ac5b"
+        },
+        "item": {
+          "id": "e4360259-6771-4e21-aad6-94bd1ba6cdde",
+          "name": "Login User Success",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9a42c7c4-7b51-4d80-9e60-2cfd5bee6662",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "const responseJson = pm.response.json();\r",
+                  "pm.environment.set(\"tokenAccess\", responseJson.token);"
+                ],
+                "_lastExecutionId": "f9507640-5b9c-4355-994b-93c7cdf5259e"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "api",
+              "v1",
+              "auth",
+              "login"
+            ],
+            "host": [
+              "goal-tracker-api",
+              "onrender",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "system": true
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "3dfafaf3-3941-4486-86db-4a96e530629e",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "goal-tracker-api.onrender.com",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "70",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\r\n    \"email\": \"jane_doe+2@gmail.com\",\r\n    \"password\": \"Passw222\"\r\n}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "response": {
+          "id": "7a2394af-c2e8-48c8-855c-b6a49c821f06",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 22 Apr 2026 20:52:17 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "245"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "access-control-allow-origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "br"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+            },
+            {
+              "key": "cross-origin-opener-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "cross-origin-resource-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"11c-3AvDAJmHLhj8m0syZ/6mhFzovB0\""
+            },
+            {
+              "key": "origin-agent-cluster",
+              "value": "?1"
+            },
+            {
+              "key": "referrer-policy",
+              "value": "no-referrer"
+            },
+            {
+              "key": "rndr-id",
+              "value": "d9c311fd-1571-496e"
+            },
+            {
+              "key": "strict-transport-security",
+              "value": "max-age=15552000; includeSubDomains"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-dns-prefetch-control",
+              "value": "off"
+            },
+            {
+              "key": "x-download-options",
+              "value": "noopen"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "x-permitted-cross-domain-policies",
+              "value": "none"
+            },
+            {
+              "key": "x-ratelimit-limit",
+              "value": "100"
+            },
+            {
+              "key": "x-ratelimit-remaining",
+              "value": "91"
+            },
+            {
+              "key": "x-ratelimit-reset",
+              "value": "1776891736"
+            },
+            {
+              "key": "x-render-origin-server",
+              "value": "Render"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "0"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "Server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "CF-RAY",
+              "value": "9f0782e5edff5e2e-KIV"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              109,
+              115,
+              103,
+              34,
+              58,
+              34,
+              83,
+              117,
+              99,
+              99,
+              101,
+              115,
+              115,
+              102,
+              117,
+              108,
+              108,
+              121,
+              32,
+              108,
+              111,
+              103,
+              103,
+              101,
+              100,
+              32,
+              105,
+              110,
+              34,
+              44,
+              34,
+              116,
+              111,
+              107,
+              101,
+              110,
+              34,
+              58,
+              34,
+              101,
+              121,
+              74,
+              104,
+              98,
+              71,
+              99,
+              105,
+              79,
+              105,
+              74,
+              73,
+              85,
+              122,
+              73,
+              49,
+              78,
+              105,
+              73,
+              115,
+              73,
+              110,
+              82,
+              53,
+              99,
+              67,
+              73,
+              54,
+              73,
+              107,
+              112,
+              88,
+              86,
+              67,
+              74,
+              57,
+              46,
+              101,
+              121,
+              74,
+              117,
+              89,
+              87,
+              49,
+              108,
+              73,
+              106,
+              111,
+              105,
+              83,
+              109,
+              70,
+              117,
+              90,
+              83,
+              66,
+              69,
+              98,
+              50,
+              85,
+              105,
+              76,
+              67,
+              74,
+              49,
+              99,
+              50,
+              86,
+              121,
+              83,
+              87,
+              81,
+              105,
+              79,
+              105,
+              73,
+              50,
+              79,
+              87,
+              85,
+              53,
+              77,
+              122,
+              65,
+              53,
+              89,
+              122,
+              73,
+              122,
+              79,
+              84,
+              73,
+              51,
+              77,
+              84,
+              107,
+              119,
+              78,
+              122,
+              100,
+              108,
+              78,
+              87,
+              73,
+              53,
+              78,
+              50,
+              81,
+              105,
+              76,
+              67,
+              74,
+              108,
+              98,
+              87,
+              70,
+              112,
+              98,
+              67,
+              73,
+              54,
+              73,
+              109,
+              112,
+              104,
+              98,
+              109,
+              86,
+              102,
+              90,
+              71,
+              57,
+              108,
+              75,
+              122,
+              74,
+              65,
+              90,
+              50,
+              49,
+              104,
+              97,
+              87,
+              119,
+              117,
+              89,
+              50,
+              57,
+              116,
+              73,
+              105,
+              119,
+              105,
+              97,
+              87,
+              70,
+              48,
+              73,
+              106,
+              111,
+              120,
+              78,
+              122,
+              99,
+              50,
+              79,
+              68,
+              107,
+              120,
+              77,
+              84,
+              77,
+              51,
+              76,
+              67,
+              74,
+              108,
+              101,
+              72,
+              65,
+              105,
+              79,
+              106,
+              69,
+              51,
+              78,
+              122,
+              107,
+              48,
+              79,
+              68,
+              77,
+              120,
+              77,
+              122,
+              100,
+              57,
+              46,
+              48,
+              113,
+              100,
+              49,
+              53,
+              45,
+              82,
+              90,
+              111,
+              48,
+              77,
+              90,
+              48,
+              72,
+              45,
+              52,
+              101,
+              104,
+              101,
+              66,
+              97,
+              119,
+              103,
+              95,
+              82,
+              88,
+              114,
+              80,
+              97,
+              100,
+              89,
+              114,
+              72,
+              57,
+              69,
+              120,
+              45,
+              108,
+              72,
+              108,
+              109,
+              79,
+              119,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 188,
+          "responseSize": 284
+        },
+        "id": "e4360259-6771-4e21-aad6-94bd1ba6cdde",
+        "assertions": [
+          {
+            "assertion": "Status code is 200",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "747cc4e9-75f9-4c8a-8c13-641559c83503",
+          "length": 6,
+          "cycles": 3,
+          "position": 5,
+          "iteration": 1,
+          "httpRequestId": "2213cbbe-76ea-4eb9-be04-14d3cc5861ab"
+        },
+        "item": {
+          "id": "ebaa6986-5432-44e9-8353-fd0286d545f2",
+          "name": "Login User Invalid Data",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "api",
+              "v1",
+              "auth",
+              "login"
+            ],
+            "host": [
+              "goal-tracker-api",
+              "onrender",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "system": true
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "1d2ae574-5cfc-4c89-b56c-de8fdae94abd",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "goal-tracker-api.onrender.com",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "2",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "response": {
+          "id": "7a445b0a-5d1e-4cba-bced-041fcf597066",
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 22 Apr 2026 20:52:17 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "49"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "access-control-allow-origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "br"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+            },
+            {
+              "key": "cross-origin-opener-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "cross-origin-resource-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"36-dA4h7fMzZa9miovTEDT1LQmvDc0\""
+            },
+            {
+              "key": "origin-agent-cluster",
+              "value": "?1"
+            },
+            {
+              "key": "referrer-policy",
+              "value": "no-referrer"
+            },
+            {
+              "key": "rndr-id",
+              "value": "e7fa9e5e-dcec-4a98"
+            },
+            {
+              "key": "strict-transport-security",
+              "value": "max-age=15552000; includeSubDomains"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-dns-prefetch-control",
+              "value": "off"
+            },
+            {
+              "key": "x-download-options",
+              "value": "noopen"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "x-permitted-cross-domain-policies",
+              "value": "none"
+            },
+            {
+              "key": "x-ratelimit-limit",
+              "value": "100"
+            },
+            {
+              "key": "x-ratelimit-remaining",
+              "value": "99"
+            },
+            {
+              "key": "x-ratelimit-reset",
+              "value": "1776891738"
+            },
+            {
+              "key": "x-render-origin-server",
+              "value": "Render"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "0"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "Server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "CF-RAY",
+              "value": "9f0782e79f7f5e2e-KIV"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              109,
+              115,
+              103,
+              34,
+              58,
+              34,
+              80,
+              108,
+              101,
+              97,
+              115,
+              101,
+              32,
+              112,
+              114,
+              111,
+              118,
+              105,
+              100,
+              101,
+              32,
+              97,
+              110,
+              32,
+              101,
+              109,
+              97,
+              105,
+              108,
+              32,
+              97,
+              100,
+              100,
+              114,
+              101,
+              115,
+              115,
+              32,
+              97,
+              110,
+              100,
+              32,
+              112,
+              97,
+              115,
+              115,
+              119,
+              111,
+              114,
+              100,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 73,
+          "responseSize": 54
+        },
+        "id": "ebaa6986-5432-44e9-8353-fd0286d545f2"
+      },
+      {
+        "cursor": {
+          "ref": "a55d093b-4cd6-4adc-a501-c97ac8f3f6a7",
+          "length": 6,
+          "cycles": 3,
+          "position": 0,
+          "iteration": 2,
+          "cr": true,
+          "httpRequestId": "a404acd9-0561-4ab4-bcd4-25bd4bb15d87"
+        },
+        "item": {
+          "id": "04e90401-b307-48ce-8eca-c256e1fc24ab",
+          "name": "Get API Status",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "status"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET"
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "bcc03a73-7fae-4420-b607-b3e29a19d276",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "pm.response.to.have.status(200);\r",
+                  "});"
+                ],
+                "_lastExecutionId": "22f4c89f-8fc9-4b98-a09d-a9b9b9511968"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "api",
+              "v1",
+              "status"
+            ],
+            "host": [
+              "goal-tracker-api",
+              "onrender",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "70d0762c-9161-4920-8974-efc2c3017570",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "goal-tracker-api.onrender.com",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            }
+          ],
+          "method": "GET"
+        },
+        "response": {
+          "id": "9c28fd0b-afc9-428d-a192-e71319e55895",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 22 Apr 2026 20:52:17 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "28"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "access-control-allow-origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "br"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+            },
+            {
+              "key": "cross-origin-opener-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "cross-origin-resource-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"18-HejVy9q0OHgLTp3iJRf1Q01GKMU\""
+            },
+            {
+              "key": "origin-agent-cluster",
+              "value": "?1"
+            },
+            {
+              "key": "referrer-policy",
+              "value": "no-referrer"
+            },
+            {
+              "key": "rndr-id",
+              "value": "6d89db14-9c45-462b"
+            },
+            {
+              "key": "strict-transport-security",
+              "value": "max-age=15552000; includeSubDomains"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-dns-prefetch-control",
+              "value": "off"
+            },
+            {
+              "key": "x-download-options",
+              "value": "noopen"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "x-permitted-cross-domain-policies",
+              "value": "none"
+            },
+            {
+              "key": "x-ratelimit-limit",
+              "value": "100"
+            },
+            {
+              "key": "x-ratelimit-remaining",
+              "value": "90"
+            },
+            {
+              "key": "x-ratelimit-reset",
+              "value": "1776891736"
+            },
+            {
+              "key": "x-render-origin-server",
+              "value": "Render"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "0"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "Server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "CF-RAY",
+              "value": "9f0782e888305e2e-KIV"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              115,
+              116,
+              97,
+              116,
+              117,
+              115,
+              34,
+              58,
+              34,
+              79,
+              80,
+              69,
+              82,
+              65,
+              84,
+              73,
+              79,
+              78,
+              65,
+              76,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 61,
+          "responseSize": 24
+        },
+        "id": "04e90401-b307-48ce-8eca-c256e1fc24ab",
+        "assertions": [
+          {
+            "assertion": "Status code is 200",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "242267c6-ea84-4b5b-80f5-c44669553913",
+          "length": 6,
+          "cycles": 3,
+          "position": 1,
+          "iteration": 2,
+          "httpRequestId": "2bd3b8ad-6e0e-4485-86c7-41f03d33f1fa"
+        },
+        "item": {
+          "id": "b31128e6-d68e-4f50-903f-fb30c98f06b8",
+          "name": "Register User Success",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "api",
+              "v1",
+              "auth",
+              "register"
+            ],
+            "host": [
+              "goal-tracker-api",
+              "onrender",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "system": true
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "5e0ced55-cf93-41b2-9a1e-2efc1d4bddc7",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "goal-tracker-api.onrender.com",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "97",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\r\n    \"name\": \"Mark Lee\",\r\n    \"email\": \"mark_lee+3@hotmail.com\",\r\n    \"password\": \"Passw333\"\r\n}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "response": {
+          "id": "5e76093e-234a-43f9-b2ab-a6af8b0af3a9",
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 22 Apr 2026 20:52:17 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "42"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "access-control-allow-origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "br"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+            },
+            {
+              "key": "cross-origin-opener-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "cross-origin-resource-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"26-RWNl2D76qBrMP37Ied8xyDTFas8\""
+            },
+            {
+              "key": "origin-agent-cluster",
+              "value": "?1"
+            },
+            {
+              "key": "referrer-policy",
+              "value": "no-referrer"
+            },
+            {
+              "key": "rndr-id",
+              "value": "a4cdeb53-057c-4f4d"
+            },
+            {
+              "key": "strict-transport-security",
+              "value": "max-age=15552000; includeSubDomains"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-dns-prefetch-control",
+              "value": "off"
+            },
+            {
+              "key": "x-download-options",
+              "value": "noopen"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "x-permitted-cross-domain-policies",
+              "value": "none"
+            },
+            {
+              "key": "x-ratelimit-limit",
+              "value": "100"
+            },
+            {
+              "key": "x-ratelimit-remaining",
+              "value": "89"
+            },
+            {
+              "key": "x-ratelimit-reset",
+              "value": "1776891736"
+            },
+            {
+              "key": "x-render-origin-server",
+              "value": "Render"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "0"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "Server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "CF-RAY",
+              "value": "9f0782e978d95e2e-KIV"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              109,
+              115,
+              103,
+              34,
+              58,
+              34,
+              69,
+              109,
+              97,
+              105,
+              108,
+              32,
+              97,
+              100,
+              100,
+              114,
+              101,
+              115,
+              115,
+              32,
+              97,
+              108,
+              114,
+              101,
+              97,
+              100,
+              121,
+              32,
+              101,
+              120,
+              105,
+              115,
+              116,
+              115,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 90,
+          "responseSize": 38
+        },
+        "id": "b31128e6-d68e-4f50-903f-fb30c98f06b8"
+      },
+      {
+        "cursor": {
+          "ref": "4b305c64-c93f-474e-ac83-1cec6e71b367",
+          "length": 6,
+          "cycles": 3,
+          "position": 2,
+          "iteration": 2,
+          "httpRequestId": "f2cc53b2-c6dd-4cbc-9603-d6e5a69a0b6c"
+        },
+        "item": {
+          "id": "404ed9b5-f2ac-4aed-b263-28aeef5c5614",
+          "name": "Register User Mail already taken",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "api",
+              "v1",
+              "auth",
+              "register"
+            ],
+            "host": [
+              "goal-tracker-api",
+              "onrender",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "system": true
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "23efc841-bbeb-40cb-86e0-e6aa5dd25968",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "goal-tracker-api.onrender.com",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "97",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\r\n    \"name\": \"Mark Lee\",\r\n    \"email\": \"mark_lee+3@hotmail.com\",\r\n    \"password\": \"Passw333\"\r\n}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "response": {
+          "id": "7f95938e-0709-4693-b770-fa2b2dbbf6a4",
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 22 Apr 2026 20:52:17 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "42"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "access-control-allow-origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "br"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+            },
+            {
+              "key": "cross-origin-opener-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "cross-origin-resource-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"26-RWNl2D76qBrMP37Ied8xyDTFas8\""
+            },
+            {
+              "key": "origin-agent-cluster",
+              "value": "?1"
+            },
+            {
+              "key": "referrer-policy",
+              "value": "no-referrer"
+            },
+            {
+              "key": "rndr-id",
+              "value": "05845779-7808-482a"
+            },
+            {
+              "key": "strict-transport-security",
+              "value": "max-age=15552000; includeSubDomains"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-dns-prefetch-control",
+              "value": "off"
+            },
+            {
+              "key": "x-download-options",
+              "value": "noopen"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "x-permitted-cross-domain-policies",
+              "value": "none"
+            },
+            {
+              "key": "x-ratelimit-limit",
+              "value": "100"
+            },
+            {
+              "key": "x-ratelimit-remaining",
+              "value": "99"
+            },
+            {
+              "key": "x-ratelimit-reset",
+              "value": "1776891738"
+            },
+            {
+              "key": "x-render-origin-server",
+              "value": "Render"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "0"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "Server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "CF-RAY",
+              "value": "9f0782ea898f5e2e-KIV"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              109,
+              115,
+              103,
+              34,
+              58,
+              34,
+              69,
+              109,
+              97,
+              105,
+              108,
+              32,
+              97,
+              100,
+              100,
+              114,
+              101,
+              115,
+              115,
+              32,
+              97,
+              108,
+              114,
+              101,
+              97,
+              100,
+              121,
+              32,
+              101,
+              120,
+              105,
+              115,
+              116,
+              115,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 104,
+          "responseSize": 38
+        },
+        "id": "404ed9b5-f2ac-4aed-b263-28aeef5c5614"
+      },
+      {
+        "cursor": {
+          "ref": "4c307705-1900-4906-b7e0-4275dda05b0a",
+          "length": 6,
+          "cycles": 3,
+          "position": 3,
+          "iteration": 2,
+          "httpRequestId": "cbfe2123-49ae-4386-9b6b-8917392d0b76"
+        },
+        "item": {
+          "id": "bfc490ba-14b5-4a82-9244-1ef7f5ede231",
+          "name": "Register User invalid Mail",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "register"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"{{name}}\",\r\n    \"email\": \"invalid_email\",\r\n    \"password\": \"{{password}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "api",
+              "v1",
+              "auth",
+              "register"
+            ],
+            "host": [
+              "goal-tracker-api",
+              "onrender",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "system": true
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "864e4b4d-4204-4248-b60d-eea015c4e781",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "goal-tracker-api.onrender.com",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "88",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\r\n    \"name\": \"Mark Lee\",\r\n    \"email\": \"invalid_email\",\r\n    \"password\": \"Passw333\"\r\n}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "response": {
+          "id": "fd5ac0a7-51fc-44a8-a179-b65d8caa9253",
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 22 Apr 2026 20:52:17 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "47"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "access-control-allow-origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "br"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+            },
+            {
+              "key": "cross-origin-opener-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "cross-origin-resource-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"2e-L+aa2cqSMKnfIn0yiOOUh1xAvF8\""
+            },
+            {
+              "key": "origin-agent-cluster",
+              "value": "?1"
+            },
+            {
+              "key": "referrer-policy",
+              "value": "no-referrer"
+            },
+            {
+              "key": "rndr-id",
+              "value": "1701a26b-831e-4940"
+            },
+            {
+              "key": "strict-transport-security",
+              "value": "max-age=15552000; includeSubDomains"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-dns-prefetch-control",
+              "value": "off"
+            },
+            {
+              "key": "x-download-options",
+              "value": "noopen"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "x-permitted-cross-domain-policies",
+              "value": "none"
+            },
+            {
+              "key": "x-ratelimit-limit",
+              "value": "100"
+            },
+            {
+              "key": "x-ratelimit-remaining",
+              "value": "88"
+            },
+            {
+              "key": "x-ratelimit-reset",
+              "value": "1776891736"
+            },
+            {
+              "key": "x-render-origin-server",
+              "value": "Render"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "0"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "Server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "CF-RAY",
+              "value": "9f0782ebba2c5e2e-KIV"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              109,
+              115,
+              103,
+              34,
+              58,
+              34,
+              80,
+              108,
+              101,
+              97,
+              115,
+              101,
+              32,
+              112,
+              114,
+              111,
+              118,
+              105,
+              100,
+              101,
+              32,
+              97,
+              32,
+              118,
+              97,
+              108,
+              105,
+              100,
+              32,
+              101,
+              109,
+              97,
+              105,
+              108,
+              32,
+              97,
+              100,
+              100,
+              114,
+              101,
+              115,
+              115,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 94,
+          "responseSize": 46
+        },
+        "id": "bfc490ba-14b5-4a82-9244-1ef7f5ede231"
+      },
+      {
+        "cursor": {
+          "ref": "695e8071-da68-4ed6-b485-5f0db200995e",
+          "length": 6,
+          "cycles": 3,
+          "position": 4,
+          "iteration": 2,
+          "httpRequestId": "d8d56e72-c525-4447-8d45-5ca10c061010"
+        },
+        "item": {
+          "id": "e4360259-6771-4e21-aad6-94bd1ba6cdde",
+          "name": "Login User Success",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"email\": \"{{email}}\",\r\n    \"password\": \"{{password}}\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "9a42c7c4-7b51-4d80-9e60-2cfd5bee6662",
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "const responseJson = pm.response.json();\r",
+                  "pm.environment.set(\"tokenAccess\", responseJson.token);"
+                ],
+                "_lastExecutionId": "f9507640-5b9c-4355-994b-93c7cdf5259e"
+              }
+            }
+          ]
+        },
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "api",
+              "v1",
+              "auth",
+              "login"
+            ],
+            "host": [
+              "goal-tracker-api",
+              "onrender",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "system": true
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "3aa235e7-113e-4f07-b102-cb5e1545d48e",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "goal-tracker-api.onrender.com",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "72",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{\r\n    \"email\": \"mark_lee+3@hotmail.com\",\r\n    \"password\": \"Passw333\"\r\n}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "response": {
+          "id": "0b600ec1-a2ae-49f8-b5bc-e6568151b65b",
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 22 Apr 2026 20:52:18 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "242"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "access-control-allow-origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "br"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+            },
+            {
+              "key": "cross-origin-opener-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "cross-origin-resource-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"11f-iI4kG/G7cGJfk3hgpMz/+MFFEVU\""
+            },
+            {
+              "key": "origin-agent-cluster",
+              "value": "?1"
+            },
+            {
+              "key": "referrer-policy",
+              "value": "no-referrer"
+            },
+            {
+              "key": "rndr-id",
+              "value": "3cf8cbb1-1e3c-4a70"
+            },
+            {
+              "key": "strict-transport-security",
+              "value": "max-age=15552000; includeSubDomains"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-dns-prefetch-control",
+              "value": "off"
+            },
+            {
+              "key": "x-download-options",
+              "value": "noopen"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "x-permitted-cross-domain-policies",
+              "value": "none"
+            },
+            {
+              "key": "x-ratelimit-limit",
+              "value": "100"
+            },
+            {
+              "key": "x-ratelimit-remaining",
+              "value": "87"
+            },
+            {
+              "key": "x-ratelimit-reset",
+              "value": "1776891736"
+            },
+            {
+              "key": "x-render-origin-server",
+              "value": "Render"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "0"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "Server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "CF-RAY",
+              "value": "9f0782ecead05e2e-KIV"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              109,
+              115,
+              103,
+              34,
+              58,
+              34,
+              83,
+              117,
+              99,
+              99,
+              101,
+              115,
+              115,
+              102,
+              117,
+              108,
+              108,
+              121,
+              32,
+              108,
+              111,
+              103,
+              103,
+              101,
+              100,
+              32,
+              105,
+              110,
+              34,
+              44,
+              34,
+              116,
+              111,
+              107,
+              101,
+              110,
+              34,
+              58,
+              34,
+              101,
+              121,
+              74,
+              104,
+              98,
+              71,
+              99,
+              105,
+              79,
+              105,
+              74,
+              73,
+              85,
+              122,
+              73,
+              49,
+              78,
+              105,
+              73,
+              115,
+              73,
+              110,
+              82,
+              53,
+              99,
+              67,
+              73,
+              54,
+              73,
+              107,
+              112,
+              88,
+              86,
+              67,
+              74,
+              57,
+              46,
+              101,
+              121,
+              74,
+              117,
+              89,
+              87,
+              49,
+              108,
+              73,
+              106,
+              111,
+              105,
+              84,
+              87,
+              70,
+              121,
+              97,
+              121,
+              66,
+              77,
+              90,
+              87,
+              85,
+              105,
+              76,
+              67,
+              74,
+              49,
+              99,
+              50,
+              86,
+              121,
+              83,
+              87,
+              81,
+              105,
+              79,
+              105,
+              73,
+              50,
+              79,
+              87,
+              85,
+              53,
+              77,
+              122,
+              65,
+              53,
+              90,
+              68,
+              73,
+              122,
+              79,
+              84,
+              73,
+              51,
+              77,
+              84,
+              107,
+              119,
+              78,
+              122,
+              100,
+              108,
+              78,
+              87,
+              73,
+              53,
+              79,
+              68,
+              81,
+              105,
+              76,
+              67,
+              74,
+              108,
+              98,
+              87,
+              70,
+              112,
+              98,
+              67,
+              73,
+              54,
+              73,
+              109,
+              49,
+              104,
+              99,
+              109,
+              116,
+              102,
+              98,
+              71,
+              86,
+              108,
+              75,
+              122,
+              78,
+              65,
+              97,
+              71,
+              57,
+              48,
+              98,
+              87,
+              70,
+              112,
+              98,
+              67,
+              53,
+              106,
+              98,
+              50,
+              48,
+              105,
+              76,
+              67,
+              74,
+              112,
+              89,
+              88,
+              81,
+              105,
+              79,
+              106,
+              69,
+              51,
+              78,
+              122,
+              89,
+              52,
+              79,
+              84,
+              69,
+              120,
+              77,
+              122,
+              103,
+              115,
+              73,
+              109,
+              86,
+              52,
+              99,
+              67,
+              73,
+              54,
+              77,
+              84,
+              99,
+              51,
+              79,
+              84,
+              81,
+              52,
+              77,
+              122,
+              69,
+              122,
+              79,
+              72,
+              48,
+              46,
+              72,
+              79,
+              113,
+              99,
+              73,
+              98,
+              81,
+              100,
+              116,
+              76,
+              122,
+              50,
+              71,
+              77,
+              106,
+              71,
+              115,
+              107,
+              49,
+              83,
+              56,
+              65,
+              45,
+              90,
+              81,
+              118,
+              50,
+              51,
+              85,
+              56,
+              53,
+              104,
+              116,
+              90,
+              104,
+              102,
+              120,
+              88,
+              121,
+              78,
+              103,
+              74,
+              65,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 234,
+          "responseSize": 287
+        },
+        "id": "e4360259-6771-4e21-aad6-94bd1ba6cdde",
+        "assertions": [
+          {
+            "assertion": "Status code is 200",
+            "skipped": false
+          }
+        ]
+      },
+      {
+        "cursor": {
+          "ref": "7cd5330e-e2e4-4390-9347-fe93ebcf0a04",
+          "length": 6,
+          "cycles": 3,
+          "position": 5,
+          "iteration": 2,
+          "httpRequestId": "c806bc10-0d84-43e8-b1e8-2258f8e0d74c"
+        },
+        "item": {
+          "id": "ebaa6986-5432-44e9-8353-fd0286d545f2",
+          "name": "Login User Invalid Data",
+          "request": {
+            "url": {
+              "path": [
+                "api",
+                "v1",
+                "auth",
+                "login"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [],
+          "event": []
+        },
+        "request": {
+          "url": {
+            "protocol": "https",
+            "path": [
+              "api",
+              "v1",
+              "auth",
+              "login"
+            ],
+            "host": [
+              "goal-tracker-api",
+              "onrender",
+              "com"
+            ],
+            "query": [],
+            "variable": []
+          },
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json",
+              "system": true
+            },
+            {
+              "key": "User-Agent",
+              "value": "PostmanRuntime/7.39.1",
+              "system": true
+            },
+            {
+              "key": "Accept",
+              "value": "*/*",
+              "system": true
+            },
+            {
+              "key": "Cache-Control",
+              "value": "no-cache",
+              "system": true
+            },
+            {
+              "key": "Postman-Token",
+              "value": "4856d237-aa89-418c-b096-27cf664ef1aa",
+              "system": true
+            },
+            {
+              "key": "Host",
+              "value": "goal-tracker-api.onrender.com",
+              "system": true
+            },
+            {
+              "key": "Accept-Encoding",
+              "value": "gzip, deflate, br",
+              "system": true
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive",
+              "system": true
+            },
+            {
+              "key": "Content-Length",
+              "value": "2",
+              "system": true
+            }
+          ],
+          "method": "POST",
+          "body": {
+            "mode": "raw",
+            "raw": "{}",
+            "options": {
+              "raw": {
+                "language": "json"
+              }
+            }
+          }
+        },
+        "response": {
+          "id": "f7f67041-335a-4fff-91e8-c3498e2e2f71",
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Wed, 22 Apr 2026 20:52:18 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json; charset=utf-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "49"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            },
+            {
+              "key": "access-control-allow-origin",
+              "value": "*"
+            },
+            {
+              "key": "Content-Encoding",
+              "value": "br"
+            },
+            {
+              "key": "content-security-policy",
+              "value": "default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests"
+            },
+            {
+              "key": "cross-origin-opener-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "cross-origin-resource-policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "etag",
+              "value": "W/\"36-dA4h7fMzZa9miovTEDT1LQmvDc0\""
+            },
+            {
+              "key": "origin-agent-cluster",
+              "value": "?1"
+            },
+            {
+              "key": "referrer-policy",
+              "value": "no-referrer"
+            },
+            {
+              "key": "rndr-id",
+              "value": "461c45a7-1001-43f8"
+            },
+            {
+              "key": "strict-transport-security",
+              "value": "max-age=15552000; includeSubDomains"
+            },
+            {
+              "key": "vary",
+              "value": "Accept-Encoding"
+            },
+            {
+              "key": "x-content-type-options",
+              "value": "nosniff"
+            },
+            {
+              "key": "x-dns-prefetch-control",
+              "value": "off"
+            },
+            {
+              "key": "x-download-options",
+              "value": "noopen"
+            },
+            {
+              "key": "x-frame-options",
+              "value": "SAMEORIGIN"
+            },
+            {
+              "key": "x-permitted-cross-domain-policies",
+              "value": "none"
+            },
+            {
+              "key": "x-ratelimit-limit",
+              "value": "100"
+            },
+            {
+              "key": "x-ratelimit-remaining",
+              "value": "99"
+            },
+            {
+              "key": "x-ratelimit-reset",
+              "value": "1776891739"
+            },
+            {
+              "key": "x-render-origin-server",
+              "value": "Render"
+            },
+            {
+              "key": "x-xss-protection",
+              "value": "0"
+            },
+            {
+              "key": "cf-cache-status",
+              "value": "DYNAMIC"
+            },
+            {
+              "key": "Server",
+              "value": "cloudflare"
+            },
+            {
+              "key": "CF-RAY",
+              "value": "9f0782eedbeb5e2e-KIV"
+            },
+            {
+              "key": "alt-svc",
+              "value": "h3=\":443\"; ma=86400"
+            }
+          ],
+          "stream": {
+            "type": "Buffer",
+            "data": [
+              123,
+              34,
+              109,
+              115,
+              103,
+              34,
+              58,
+              34,
+              80,
+              108,
+              101,
+              97,
+              115,
+              101,
+              32,
+              112,
+              114,
+              111,
+              118,
+              105,
+              100,
+              101,
+              32,
+              97,
+              110,
+              32,
+              101,
+              109,
+              97,
+              105,
+              108,
+              32,
+              97,
+              100,
+              100,
+              114,
+              101,
+              115,
+              115,
+              32,
+              97,
+              110,
+              100,
+              32,
+              112,
+              97,
+              115,
+              115,
+              119,
+              111,
+              114,
+              100,
+              34,
+              125
+            ]
+          },
+          "cookie": [],
+          "responseTime": 67,
+          "responseSize": 54
+        },
+        "id": "ebaa6986-5432-44e9-8353-fd0286d545f2"
+      }
+    ],
+    "transfers": {
+      "responseTotal": 1461
+    },
+    "failures": [],
+    "error": null
+  }
+}

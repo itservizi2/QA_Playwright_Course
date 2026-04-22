@@ -1,0 +1,6 @@
+[
+  { "name": "John Smith", "email": "john_smith+1@yahoo.com", "password": "Passw111" },
+  { "name": "Jane Doe", "email": "jane_doe+2@gmail.com", "password": "Passw222" },
+  { "name": "Mark Lee", "email": "mark_lee+3@hotmail.com", "password": "Passw333" }
+]
+

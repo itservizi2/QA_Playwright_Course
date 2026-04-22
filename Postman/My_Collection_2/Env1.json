@@ -1,0 +1,16 @@
+{
+	"id": "e465eac7-2962-4741-9d09-7781d01daf68",
+	"name": "Env1",
+	"values": [
+		{
+			"key": "baseUrl",
+			"value": "https://goal-tracker-api.onrender.com",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"color": null,
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2026-04-22T19:40:14.024Z",
+	"_postman_exported_using": "Postman/12.7.4"
+}
