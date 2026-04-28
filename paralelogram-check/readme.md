@@ -1,3 +1,7 @@
+npm test
+npx jest tests/paralelogram.test.ts
+npx jest
+
 # Project Instructions
 
 ## Running `paralelogram.ts`
