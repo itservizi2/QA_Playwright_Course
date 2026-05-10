@@ -1,5 +1,7 @@
 // 4.Add elements at the beginning of an array using unshift.
 
+
+
 let arr: string[] = ["banana", "cherry"];
 
 console.log("Initial array:", arr);

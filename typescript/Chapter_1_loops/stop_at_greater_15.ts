@@ -3,9 +3,9 @@
 let nummm: number = 1;
 
 while (true) {
-    if (num > 15) {
+    if (nummm > 15) {
         break;
     }
-    console.log(num);
+    console.log(nummm);
     nummm++;
 }

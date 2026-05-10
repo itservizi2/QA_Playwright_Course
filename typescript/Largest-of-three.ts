@@ -34,4 +34,5 @@ function askValidNumber(query: string): Promise<number> {
     console.log(`The largest number is: ${largest}`);
 
     rl.close();
+    process.exit(0);
 })();

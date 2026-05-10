@@ -4,9 +4,9 @@ let numbb: number = 1;
 
 while (numbb <= 30) {
     if (numbb % 5 === 0) {
-        num++;
+        numbb++;
         continue;
     }
     console.log(numbb);
-    num++;
+    numbb++;
 }
